@@ -11,5 +11,8 @@ namespace Win32
     {
         [DllImport("coredll", SetLastError = true)]
         public static IntPtr GetForegroundWindow();
+
+        [DllImport("coredll", SetLastError = true)]
+        public static IntPtr GetDesktopWindow();
     }
 }
