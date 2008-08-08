@@ -1,20 +1,170 @@
 ﻿using System;
-using System.Linq;
+
 using System.Collections.Generic;
 using System.Text;
+
 using System.Runtime.InteropServices;
 
 namespace Win32
 {
-    public static class Kernel32
+    public class Kernal32
     {
-        [DllImport("coredll", SetLastError = true)]
-        public static extern void SetForegroundWindow(IntPtr hwnd);
+        #region GetSystemPowerStatusEx[2]
 
-        [DllImport("coredll", SetLastError = true)]
-        public static extern IntPtr GetForegroundWindow();
 
-        [DllImport("coredll", SetLastError = true)]
-        public static extern IntPtr GetDesktopWindow();
+        /// <summary>
+        /// Wrapper over GetSystemPowerStatusEx
+        /// </summary>
+        /// <returns></returns>
+        public static int GetBatteryLifePercent()
+        {
+            SYSTEM_POWER_STATUS_EX status = new SYSTEM_POWER_STATUS_EX();
+
+            byte percent = 0;
+            if (GetSystemPowerStatusEx(status, false) == 1)
+            {
+                percent = status.BatteryLifePercent;
+            }
+            return percent;
+        }
+
+        /// <summary>
+        /// Wrapper over GetSystemPowerStatusEx2
+        /// </summary>
+        /// <returns></returns>
+        public static int GetBatteryLifePercent2()
+        {
+            SYSTEM_POWER_STATUS_EX2 status2 = new SYSTEM_POWER_STATUS_EX2();
+
+            int percent = 0;
+            if (GetSystemPowerStatusEx2(status2,
+                 (uint)Marshal.SizeOf(status2), false) ==
+                 (uint)Marshal.SizeOf(status2))
+            {
+                percent = status2.BackupBatteryLifePercent;
+            }
+            return percent;
+        }
+
+        [DllImport("coredll")]
+        public static extern uint GetSystemPowerStatusEx(SYSTEM_POWER_STATUS_EX lpSystemPowerStatus,
+            bool fUpdate);
+
+        [DllImport("coredll")]
+        public static extern uint GetSystemPowerStatusEx2(SYSTEM_POWER_STATUS_EX2 lpSystemPowerStatus,
+            uint dwLen, bool fUpdate);
+
+
+        public class SYSTEM_POWER_STATUS_EX2
+        {
+            public byte ACLineStatus;
+            public byte BatteryFlag;
+            public byte BatteryLifePercent;
+            public byte Reserved1;
+            public uint BatteryLifeTime;
+            public uint BatteryFullLifeTime;
+            public byte Reserved2;
+            public byte BackupBatteryFlag;
+            public byte BackupBatteryLifePercent;
+            public byte Reserved3;
+            public uint BackupBatteryLifeTime;
+            public uint BackupBatteryFullLifeTime;
+            public uint BatteryVoltage;
+            public uint BatteryCurrent;
+            public uint BatteryAverageCurrent;
+            public uint BatteryAverageInterval;
+            public uint BatterymAHourConsumed;
+            public uint BatteryTemperature;
+            public uint BackupBatteryVoltage;
+            public byte BatteryChemistry;
+        }
+
+        public class SYSTEM_POWER_STATUS_EX
+        {
+            public byte ACLineStatus;
+            public byte BatteryFlag;
+            public byte BatteryLifePercent;
+            public byte Reserved1;
+            public uint BatteryLifeTime;
+            public uint BatteryFullLifeTime;
+            public byte Reserved2;
+            public byte BackupBatteryFlag;
+            public byte BackupBatteryLifePercent;
+            public byte Reserved3;
+            public uint BackupBatteryLifeTime;
+            public uint BackupBatteryFullLifeTime;
+        }
+
+        #endregion
+
+        #region SetPowerRequirement
+        public enum CEDevicePowerState
+        {
+            Unspecified = -1,
+            FullOn = 0,
+            LowOn,
+            StandBy,
+            Sleep,
+            Off,
+            Maximum
+        }
+
+
+
+        public enum PowerDeviceFlags
+        {
+            POWER_FORCE = 0x1000,
+            POWER_NAME = 0x0001,
+        }
+
+        public enum PowerState
+        {
+            POWER_STATE_SUSPEND = 0x00200000,
+        }
+
+
+        [DllImport("coredll.dll", SetLastError = true)]
+        public static extern int SetSystemPowerState(string psState, PowerState StateFlags, PowerDeviceFlags Options); //POWER_FORCE
+
+        [DllImport("CoreDll.DLL", SetLastError = true)]
+        public static extern IntPtr SetPowerRequirement(
+            String pvDevice, CEDevicePowerState DeviceState, PowerDeviceFlags DeviceFlags, IntPtr pvSystemState, int StateFlags);
+
+        [DllImport("CoreDll.DLL", SetLastError = true)]
+        public static extern uint ReleasePowerRequirement(IntPtr hPowerReq);
+
+        [DllImport("coredll.dll", SetLastError = true)]
+        public static extern int SetDevicePower(
+            string pvDevice,
+            PowerDeviceFlags dwDeviceFlags,
+            CEDevicePowerState DeviceState);
+
+        [DllImport("coredll.dll", SetLastError = true)]
+        public static extern int GetDevicePower(
+            string pvDevice,
+            PowerDeviceFlags dwDeviceFlags,
+            ref CEDevicePowerState DeviceState);
+
+        [DllImport("coredll.dll", SetLastError = true)]
+        public static extern int DevicePowerNotify(
+            string device,
+            CEDevicePowerState state,
+            int flags);
+
+        #endregion
+
+        /// <summary>
+        /// Never P/Invoke to GetLastError.  Call Marshal.GetLastWin32Error instead!
+        /// </summary>
+        /// <returns>
+        /// System Error Codes :
+        /// http://msdn2.microsoft.com/en-us/library/ms681381.aspx
+        /// </returns>
+        public static int GetLastError()
+        {
+            throw new Exception("Never P/Invoke to GetLastError.  Call Marshal.GetLastWin32Error instead!");
+        }
+
+
     }
 }
