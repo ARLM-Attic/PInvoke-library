@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32", "Win32\Win32.csproj", "{4FE778D2-D8DF-4A8D-998D-6131C9D995D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32CE", "WinCE32\Win32CE.csproj", "{0B73FCD3-B640-4AAA-A741-B529301334B0}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Win32\\Win32.csproj
+		SccProjectName1 = Win32
+		SccLocalPath1 = Win32
+		SccProjectUniqueName2 = WinCE32\\Win32CE.csproj
+		SccProjectName2 = WinCE32
+		SccLocalPath2 = WinCE32
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FE778D2-D8DF-4A8D-998D-6131C9D995D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE778D2-D8DF-4A8D-998D-6131C9D995D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE778D2-D8DF-4A8D-998D-6131C9D995D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE778D2-D8DF-4A8D-998D-6131C9D995D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B73FCD3-B640-4AAA-A741-B529301334B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B73FCD3-B640-4AAA-A741-B529301334B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B73FCD3-B640-4AAA-A741-B529301334B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B73FCD3-B640-4AAA-A741-B529301334B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
