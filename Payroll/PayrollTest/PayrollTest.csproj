@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
-    <Content Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Payroll\Payroll.csproj">
