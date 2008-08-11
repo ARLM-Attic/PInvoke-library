@@ -28,7 +28,6 @@ namespace Payroll
             }
         }
 
-
         private string address;
         public string Address
         {
@@ -74,21 +73,17 @@ namespace Payroll
             }
         }
 
-
+        private Affiliation affiliation;
         public Affiliation Affiliation
         {
             get
             {
-                throw new System.NotImplementedException();
+                return affiliation;
             }
             set
             {
+                this.affiliation = value;
             }
         }
-
-
-
-
-
     }
 }

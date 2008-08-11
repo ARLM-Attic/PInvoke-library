@@ -171,7 +171,7 @@ namespace PayrollTest
         }
 
         [TestMethod]
-        public void ServiceReceiptTransactionTest()
+        public void SalesReceiptTransactionTest()
         {
             int id = 6;
             DateTime date = new DateTime(2008,8, 8);
@@ -191,6 +191,36 @@ namespace PayrollTest
 
             SalesReceipt receipt = c.GetSalesReceipt(date);
             Assert.AreEqual(amount, receipt.Amount, 0.01);
+        }
+
+        [TestMethod]
+        public void ServiceChargeTest()
+        {
+            int id = 7;
+            string name = "Dummy7";
+
+            int memberId = 1;
+             double amount = 200.0;
+            DateTime date = new DateTime(2008, 8, 11);
+
+            AddSalariedEmployee add = new AddSalariedEmployee(id, name, "home office", 1000.00);
+            add.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(id);
+            Assert.IsNotNull(e);
+
+            UnionAffiliation affiliation = new UnionAffiliation();
+            e.Affiliation = affiliation;
+
+            PayrollDatabase.AddUnionMember(memberId, e);
+
+            ServiceChargeTransaction trans = new ServiceChargeTransaction(memberId,
+                date, amount);
+            trans.Execute();
+
+            ServiceCharge charge = affiliation.GetServiceCharge(date);
+            Assert.IsNotNull(charge);
+            Assert.AreEqual(amount, charge.Amount, 0.01);
         }
     }
 }

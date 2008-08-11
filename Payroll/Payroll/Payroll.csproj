@@ -74,6 +74,7 @@
     <Compile Include="SalesReceipt.cs" />
     <Compile Include="SalesReceiptTransaction.cs" />
     <Compile Include="ServiceCharge.cs" />
+    <Compile Include="ServiceChargeTransaction.cs" />
     <Compile Include="TimeCard.cs" />
     <Compile Include="TimeCardTransaction.cs" />
     <Compile Include="Transaction.cs" />

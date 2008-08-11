@@ -6,26 +6,17 @@ namespace Payroll
 {
     public class UnionAffiliation : Affiliation
     {
-        public int Dues
+        private Dictionary<DateTime, ServiceCharge> charges = new Dictionary<DateTime, ServiceCharge>();
+
+        //TODO: Direct to Database?
+        internal void AddServiceCharge(ServiceCharge charge)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            charges.Add(charge.Date, charge);
         }
 
-        public ServiceCharge ServiceCharge
+        public ServiceCharge GetServiceCharge(DateTime date)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            return charges[date];
         }
     }
 }
