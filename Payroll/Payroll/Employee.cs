@@ -26,12 +26,17 @@ namespace Payroll
             {
                 return name;
             }
+            set
+            {
+                this.name = value;
+            }
         }
 
         private string address;
         public string Address
         {
             get { return address; }
+            set { address = value; }
         }
 
         private PaymentClassification classification;

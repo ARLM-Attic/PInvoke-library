@@ -7,7 +7,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAACAAAQAAAABCAAAAQgAAQAAEIEAABCAAAAAAAAAgA=</HashCode>
+      <HashCode>AAACAAAQAAAAFCAAAAQgAAQAAEIEAABCAAAAAAAAAgA=</HashCode>
       <FileName>Employee.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -32,17 +32,14 @@
   <Class Name="Payroll.HourlyClassification" Collapsed="true">
     <Position X="3.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIACAASAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>HourlyClassification.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="TimeCard" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Payroll.CommissionedClassification" Collapsed="true">
     <Position X="7" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAAgIAAAACAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAgIAAAACAAAAgAAAAAAAAAAAEAAAQAAAA=</HashCode>
       <FileName>CommissionedClassification.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -73,32 +70,29 @@
   <Class Name="Payroll.TimeCard">
     <Position X="3.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAQA=</HashCode>
       <FileName>TimeCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Payroll.SalesReceipt">
     <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAgAABAAAAAQAAAAA=</HashCode>
       <FileName>SalesReceipt.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Payroll.UnionAffiliation">
     <Position X="11" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAACAAA=</HashCode>
       <FileName>UnionAffiliation.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="ServiceCharge" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Payroll.ServiceCharge">
-    <Position X="11" Y="3.25" Width="1.5" />
+    <Position X="11" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAgAABAAAAAQAAAAA=</HashCode>
       <FileName>ServiceCharge.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -104,24 +104,24 @@ namespace PayrollTest
         public void AddCommissionedEmployeeTest()
         {
             int id = 3;
-            AddCommissionedEmployee transaction = new AddCommissionedEmployee(id,"Selena", "shanghai", 2400.00, 0.20);
+            AddCommissionedEmployee transaction = new AddCommissionedEmployee(id, "Selena", "shanghai", 2400.00, 0.20);
             transaction.Execute();
 
 
             Employee e = PayrollDatabase.GetEmployee(id);
-            
+
             Assert.AreEqual("Selena", e.Name);
             Assert.AreNotEqual("selena", e.Name);
 
             Assert.AreEqual("shanghai", e.Address);
-            
+
             Assert.IsTrue(e.Classification is CommissionedClassification);
             CommissionedClassification c = e.Classification as CommissionedClassification;
             Assert.AreEqual(2400.00, c.Salary, 0.01);
             Assert.AreEqual(0.20, c.CommissionRate, 0.01);
 
             Assert.IsTrue(e.Schedule is BiweeklySchedule);
-            Assert.IsTrue (e.Method is HoldMethod);
+            Assert.IsTrue(e.Method is HoldMethod);
         }
 
         [TestMethod]
@@ -147,8 +147,8 @@ namespace PayrollTest
             int id = 5;
             double hourlyRate = 10.0;
             double delta = 0.01;
-            DateTime date = new DateTime(2008, 8, 8);  
-          
+            DateTime date = new DateTime(2008, 8, 8);
+
             TimeSpan time = new TimeSpan(2, 30, 0);
 
             AddEmployee add = new AddHourlyEmployee(id, "HourlyEmployee", "swhere", hourlyRate);
@@ -167,14 +167,14 @@ namespace PayrollTest
             Assert.IsNotNull(card);
 
             TimeSpan actualTime = card.Time;
-            Assert.AreEqual(time.TotalMinutes,actualTime.TotalMinutes);
+            Assert.AreEqual(time.TotalMinutes, actualTime.TotalMinutes);
         }
 
         [TestMethod]
         public void SalesReceiptTransactionTest()
         {
             int id = 6;
-            DateTime date = new DateTime(2008,8, 8);
+            DateTime date = new DateTime(2008, 8, 8);
             double amount = 2000.0;
 
             AddEmployee add = new AddCommissionedEmployee(id, "Warren", "somewhere", 5000.00, 0.3);
@@ -200,7 +200,7 @@ namespace PayrollTest
             string name = "Dummy7";
 
             int memberId = 1;
-             double amount = 200.0;
+            double amount = 200.0;
             DateTime date = new DateTime(2008, 8, 11);
 
             AddSalariedEmployee add = new AddSalariedEmployee(id, name, "home office", 1000.00);
@@ -221,6 +221,62 @@ namespace PayrollTest
             ServiceCharge charge = affiliation.GetServiceCharge(date);
             Assert.IsNotNull(charge);
             Assert.AreEqual(amount, charge.Amount, 0.01);
+        }
+
+        [TestMethod]
+        public void ChangeNameTransaction()
+        {
+            int empid = 8;
+            string name = "somebody";
+            string newName = "somebody else";
+
+            AddSalariedEmployee add = new AddSalariedEmployee(empid, name, "somewhere", 11.11);
+            add.Execute();
+
+            ChangeNameTransaction changeName = new ChangeNameTransaction(empid, newName);
+            changeName.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.AreEqual(newName, e.Name);
+        }
+
+        [TestMethod]
+        public void ChangeAddressTransaction()
+        {
+            int empid = 9;
+            string address = "somebody";
+            string newAddress = "somebody else";
+
+            AddSalariedEmployee add = new AddSalariedEmployee(empid, "someone", address, 11.11);
+            add.Execute();
+
+            Transaction changeAddresss = new ChangeAddressTransaction(empid, newAddress);
+            changeAddresss.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.AreEqual(newAddress, e.Address);
+        }
+
+        [TestMethod]
+        public void ChangeSalariedTransactionTest()
+        {
+            int empid = 10;
+
+            Transaction trans = new AddCommissionedEmployee(empid, "somebody", "somewhere", 111.11, 0.03);
+            trans.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.IsNotNull(e);
+            Assert.IsTrue(e.Classification is CommissionedClassification);
+
+            trans = new ChangeSalariedTransaction(empid, 222.22);
+            trans.Execute();
+
+            SalariedClassification sc = e.Classification as SalariedClassification;
+            Assert.IsNotNull(sc);
+            Assert.AreEqual(222.22, sc.Salary);
+
+            Assert.IsTrue(e.Schedule is MonthlySchedule);
         }
     }
 }
