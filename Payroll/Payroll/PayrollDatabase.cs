@@ -7,7 +7,7 @@ namespace Payroll
 {
     public class PayrollDatabase
     {
-#region employees
+        #region employees
         private static Dictionary<int, Employee> employees = new Dictionary<int, Employee>();
 
         public static void AddEmployee(int id, Employee e)
@@ -28,15 +28,16 @@ namespace Payroll
             return employees.Remove(id);
         }
 
-#endregion
+        #endregion
 
         #region Union Affiliation
-
         private static Dictionary<int, Employee> unionMembers = new Dictionary<int, Employee>();
 
         public static Employee GetUnionMember(int memberId)
         {
-            return unionMembers[memberId];
+            Employee e = null;
+            unionMembers.TryGetValue(memberId, out e);
+            return e;
         }
 
         public static void AddUnionMember(int memberId, Employee e)
@@ -44,6 +45,12 @@ namespace Payroll
             unionMembers.Add(memberId, e);
         }
 
+        internal static void RemoveUnionMember(int memberId)
+        {
+            unionMembers.Remove(memberId);
+        }
         #endregion
+
+
     }
 }

@@ -380,6 +380,7 @@ namespace PayrollTest
             Transaction trans = new AddSalariedEmployee(empid, "someone", "some place", 3223);
             trans.Execute();
 
+            //Change to unionAffiliation
             trans = new ChangeMemberTransaction(empid, memberId, dues);
             trans.Execute();
 
@@ -391,6 +392,14 @@ namespace PayrollTest
             Employee member = PayrollDatabase.GetUnionMember(memberId);
             Assert.IsNotNull(member);
             Assert.AreSame(e, member);
+
+            //Change back to NoAffiliation
+            trans = new ChangeUnaffiliatedTranaction(empid);
+            trans.Execute();
+
+            Assert.IsTrue(e.Affiliation is NoAffiliation);
+
+            Assert.IsNull(PayrollDatabase.GetUnionMember(memberId));
         }
     }
 }

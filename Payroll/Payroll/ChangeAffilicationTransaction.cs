@@ -10,13 +10,20 @@ namespace Payroll
 
         protected override void Change(Employee e)
         {
+            RecordMembership(e);
+            e.Affiliation = MakeAffiliation();
+        }
+
+        protected virtual void RecordMembership(Employee e)
+        {
+            // TODO: It's bad to depend on UnionAffiliation here... 
+            // Maybe I can move this to PayrollDatabase
             UnionAffiliation ua = e.Affiliation as UnionAffiliation;
             if (ua != null)
             {
-                // TODO remove union member! It's bad to depend on UnionAffiliation here...
+                int memberId = ua.MemberId;
+                PayrollDatabase.RemoveUnionMember(memberId);
             }
-
-            e.Affiliation = MakeAffiliation();
         }
 
         protected abstract Affiliation MakeAffiliation(); 
