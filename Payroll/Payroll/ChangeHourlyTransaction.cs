@@ -4,16 +4,24 @@ using System.Text;
 
 namespace Payroll
 {
-    //public class ChangeHourlyTransaction : ChangeClassificationTransaction
-    //{
+    public class ChangeHourlyTransaction : ChangeClassificationTransaction
+    {
+        public ChangeHourlyTransaction(int empid, double hourlyRate)
+            : base(empid)
+        {
+            this.hourlyRate = hourlyRate;
+        }
 
-    //    protected override PaymentClassification GetClassification()
-    //    {
-    //    }
+        private double hourlyRate;
 
-    //    protected override PaymentSchedule GetSchedule()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        protected override PaymentClassification MakeClassification()
+        {
+            return new HourlyClassification(this.hourlyRate);
+        }
+
+        protected override PaymentSchedule MakeSchedule()
+        {
+            return new WeeklySchedule();
+        }
+    }
 }

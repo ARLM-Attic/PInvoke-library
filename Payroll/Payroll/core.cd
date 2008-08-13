@@ -54,15 +54,15 @@
   <Class Name="Payroll.DirectMethod">
     <Position X="1.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEA=</HashCode>
       <FileName>DirectMethod.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Payroll.MailMethod">
-    <Position X="1.25" Y="4.75" Width="1.5" />
+    <Position X="1.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAA=</HashCode>
       <FileName>MailMethod.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -84,7 +84,7 @@
   <Class Name="Payroll.UnionAffiliation">
     <Position X="11" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAACAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAABBAAAAQQAAAAAAEAAAAAAAAAACAAA=</HashCode>
       <FileName>UnionAffiliation.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -120,8 +120,16 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Payroll.NoAffiliation">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NoAffiliation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="Payroll.Affiliation">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Affiliation.cs</FileName>

@@ -34,7 +34,7 @@ namespace Payroll
 
         private static Dictionary<int, Employee> unionMembers = new Dictionary<int, Employee>();
 
-        internal static Employee GetUnionMember(int memberId)
+        public static Employee GetUnionMember(int memberId)
         {
             return unionMembers[memberId];
         }

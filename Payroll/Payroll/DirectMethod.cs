@@ -6,25 +6,27 @@ namespace Payroll
 {
     public class DirectMethod : PaymentMethod
     {
+        public DirectMethod(string bank, string account)
+        {
+            this.bank = bank;
+            this.account = account;
+        }
+
+        private string bank;
         public string Bank
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                return bank;
             }
         }
 
+        private string account;
         public string Account
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                return account;
             }
         }
     }

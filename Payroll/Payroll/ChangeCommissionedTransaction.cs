@@ -4,18 +4,26 @@ using System.Text;
 
 namespace Payroll
 {
-    //public class ChangeCommissionedTransaction : ChangeClassificationTransaction
-    //{
+    public class ChangeCommissionedTransaction : ChangeClassificationTransaction
+    {
+        public ChangeCommissionedTransaction(int empid, double salary, double commissionRate)
+            : base(empid)
+        {
+            this.salary = salary;
+            this.commissionRate = commissionRate;
+        }
 
+        private double salary;
+        private double commissionRate;
 
-    //    protected override PaymentClassification GetClassification()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        protected override PaymentClassification MakeClassification()
+        {
+            return new CommissionedClassification(this.salary, this.commissionRate);
+        }
 
-    //    protected override PaymentSchedule GetSchedule()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        protected override PaymentSchedule MakeSchedule()
+        {
+            return new BiweeklySchedule();
+        }
+    }
 }

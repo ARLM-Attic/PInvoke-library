@@ -6,14 +6,17 @@ namespace Payroll
 {
     public class MailMethod : PaymentMethod
     {
+        public MailMethod(string address)
+        {
+            this.address = address;
+        }
+
+        private string address;
         public string Address
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                return address;
             }
         }
     }

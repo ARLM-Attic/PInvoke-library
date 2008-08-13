@@ -6,9 +6,22 @@ namespace Payroll
 {
     public class UnionAffiliation : Affiliation
     {
+        public UnionAffiliation(int memberId, double dues)
+        {
+            this.memberId = memberId;
+            this.dues = dues;
+        }
+
+        private int memberId;
+        public int MemberId { get { return memberId; } }
+
+        private double dues;
+        public double Dues { get { return dues; } }
+
+        #region
+        //TODO: Direct to Database?
         private Dictionary<DateTime, ServiceCharge> charges = new Dictionary<DateTime, ServiceCharge>();
 
-        //TODO: Direct to Database?
         internal void AddServiceCharge(ServiceCharge charge)
         {
             charges.Add(charge.Date, charge);
@@ -18,5 +31,6 @@ namespace Payroll
         {
             return charges[date];
         }
+        #endregion
     }
 }

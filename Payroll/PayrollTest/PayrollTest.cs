@@ -14,6 +14,11 @@ namespace PayrollTest
     [TestClass]
     public class PayrollTest
     {
+        private static int _nextId = 1;
+        private static int NextId { get { return _nextId++; } }
+
+        private  const double delta = 0.01;
+
         public PayrollTest()
         {
         }
@@ -61,7 +66,7 @@ namespace PayrollTest
         [TestMethod]
         public void AddSalariedEmployeeTest()
         {
-            int id = 1;
+            int id = NextId;
             AddSalariedEmployee transaction = new AddSalariedEmployee(id, "Bob", "Home", 1000.00);
             transaction.Execute();
 
@@ -82,7 +87,7 @@ namespace PayrollTest
         [TestMethod]
         public void AddHourlyEmployeeTest()
         {
-            int id = 2;
+            int id = NextId;
             AddHourlyEmployee transaction = new AddHourlyEmployee(id, "Warren", "ms", 22.00);
             transaction.Execute();
 
@@ -103,7 +108,7 @@ namespace PayrollTest
         [TestMethod]
         public void AddCommissionedEmployeeTest()
         {
-            int id = 3;
+            int id = NextId;
             AddCommissionedEmployee transaction = new AddCommissionedEmployee(id, "Selena", "shanghai", 2400.00, 0.20);
             transaction.Execute();
 
@@ -127,7 +132,7 @@ namespace PayrollTest
         [TestMethod]
         public void DeleteEmployeeTest()
         {
-            int id = 4;
+            int id = NextId;
             AddSalariedEmployee trans = new AddSalariedEmployee(id, "ToBeDeleted", "somewhere", 1000.00);
             trans.Execute();
 
@@ -144,7 +149,7 @@ namespace PayrollTest
         [TestMethod]
         public void TimeCardTransactionTest()
         {
-            int id = 5;
+            int id = NextId;
             double hourlyRate = 10.0;
             double delta = 0.01;
             DateTime date = new DateTime(2008, 8, 8);
@@ -173,7 +178,7 @@ namespace PayrollTest
         [TestMethod]
         public void SalesReceiptTransactionTest()
         {
-            int id = 6;
+            int id = NextId;
             DateTime date = new DateTime(2008, 8, 8);
             double amount = 2000.0;
 
@@ -196,7 +201,7 @@ namespace PayrollTest
         [TestMethod]
         public void ServiceChargeTest()
         {
-            int id = 7;
+            int id = NextId;
             string name = "Dummy7";
 
             int memberId = 1;
@@ -209,7 +214,7 @@ namespace PayrollTest
             Employee e = PayrollDatabase.GetEmployee(id);
             Assert.IsNotNull(e);
 
-            UnionAffiliation affiliation = new UnionAffiliation();
+            UnionAffiliation affiliation = new UnionAffiliation(NextId, 22.1);
             e.Affiliation = affiliation;
 
             PayrollDatabase.AddUnionMember(memberId, e);
@@ -226,7 +231,7 @@ namespace PayrollTest
         [TestMethod]
         public void ChangeNameTransaction()
         {
-            int empid = 8;
+            int empid = NextId;
             string name = "somebody";
             string newName = "somebody else";
 
@@ -243,7 +248,7 @@ namespace PayrollTest
         [TestMethod]
         public void ChangeAddressTransaction()
         {
-            int empid = 9;
+            int empid = NextId;
             string address = "somebody";
             string newAddress = "somebody else";
 
@@ -260,7 +265,7 @@ namespace PayrollTest
         [TestMethod]
         public void ChangeSalariedTransactionTest()
         {
-            int empid = 10;
+            int empid = NextId;
 
             Transaction trans = new AddCommissionedEmployee(empid, "somebody", "somewhere", 111.11, 0.03);
             trans.Execute();
@@ -277,6 +282,115 @@ namespace PayrollTest
             Assert.AreEqual(222.22, sc.Salary);
 
             Assert.IsTrue(e.Schedule is MonthlySchedule);
+        }
+
+        [TestMethod]
+        public void ChangeHourlyTransactionTest()
+        {
+            int empid = NextId;
+            double hourlyRate =  44.44;
+
+            Transaction trans = new AddSalariedEmployee(empid, "warren", "office", 10000.00);
+            trans.Execute();
+
+            trans = new ChangeHourlyTransaction(empid, hourlyRate );
+            trans.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.IsNotNull(e);
+
+            HourlyClassification hc = e.Classification as HourlyClassification;
+            Assert.IsNotNull(hc);
+            Assert.AreEqual(hourlyRate, hc.HourlyRate);
+
+            Assert.IsTrue(e.Schedule is WeeklySchedule);
+        }
+
+        [TestMethod]
+        public void ChangeCommissionedTransactionTest()
+        {
+            int empid = NextId;
+            double salary = 2222.22;
+            double commissionRate = .3;
+
+            Transaction trans = new AddHourlyEmployee(empid, "someone", "somewhere", 33.0);
+            trans.Execute();
+
+            trans = new ChangeCommissionedTransaction(empid, salary, commissionRate);
+            trans.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.IsNotNull(e);
+
+            CommissionedClassification cc = e.Classification as CommissionedClassification;
+            Assert.IsNotNull(cc);
+
+            Assert.AreEqual(salary, cc.Salary, delta);
+            Assert.AreEqual(commissionRate, cc.CommissionRate, delta);
+
+            Assert.IsTrue(e.Schedule is BiweeklySchedule);
+        }
+
+        [TestMethod]
+        public void ChangeMethodTransactonTest()
+        {
+            int empid = NextId;
+            string bank = "ICBC";
+            string account = "12345";
+
+            string address = "wall street.";
+
+            Transaction trans = new AddHourlyEmployee(empid, "nobody", "nowhere", 33);
+            trans.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            Assert.IsTrue(e.Method is HoldMethod);
+
+            //Change to direct method.
+            trans = new ChangeDirectTransaction(empid, bank, account);
+            trans.Execute();
+
+            DirectMethod dm = e.Method as DirectMethod;
+            Assert.IsNotNull(dm);
+            Assert.AreEqual(bank, dm.Bank);
+            Assert.AreEqual(account, dm.Account);
+
+            //Changes to MailMethod
+            trans = new ChangeMailTransaction(empid, address);
+            trans.Execute();
+
+            MailMethod mm = e.Method as MailMethod;
+            Assert.IsNotNull(mm);
+            Assert.AreEqual(address, mm.Address);
+
+            //Changes back to HoldMethod
+            trans = new ChangeHoldTransaction(empid);
+            trans.Execute();
+
+            Assert.IsTrue(e.Method is HoldMethod);
+        }
+
+        [TestMethod]
+        public void ChangeAffiliationTransactionTest()
+        {
+            int empid = NextId;
+            int memberId = NextId;
+            double dues = 33.33;
+
+            Transaction trans = new AddSalariedEmployee(empid, "someone", "some place", 3223);
+            trans.Execute();
+
+            trans = new ChangeMemberTransaction(empid, memberId, dues);
+            trans.Execute();
+
+            Employee e = PayrollDatabase.GetEmployee(empid);
+            UnionAffiliation ua = e.Affiliation as UnionAffiliation;
+            Assert.IsNotNull(ua);
+            Assert.AreEqual(dues, ua.Dues, delta);
+
+            Employee member = PayrollDatabase.GetUnionMember(memberId);
+            Assert.IsNotNull(member);
+            Assert.AreSame(e, member);
         }
     }
 }
