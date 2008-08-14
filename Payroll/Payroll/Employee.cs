@@ -78,7 +78,7 @@ namespace Payroll
             }
         }
 
-        private Affiliation affiliation;
+        private Affiliation affiliation = new NoAffiliation();
         public Affiliation Affiliation
         {
             get
@@ -89,6 +89,23 @@ namespace Payroll
             {
                 this.affiliation = value;
             }
+        }
+
+        internal bool IsPayDay(DateTime date)
+        {
+            return this.schedule.IsPayDay(date);
+        }
+
+        internal Paycheck Payday(DateTime dateTime)
+        {
+            Paycheck pc = new Paycheck();
+
+            this.classification.CalculatePay(pc);
+            this.affiliation.CalculateDeductions(pc);
+
+            this.Method.Pay(pc);
+
+            return pc;
         }
     }
 }

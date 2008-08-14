@@ -19,5 +19,14 @@ namespace Payroll
                 return address;
             }
         }
+
+        #region PaymentMethod Members
+
+        public void Pay(Paycheck pc)
+        {
+            //TODO: Pay via mail.
+        }
+
+        #endregion
     }
 }

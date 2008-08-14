@@ -28,6 +28,14 @@ namespace Payroll
             return employees.Remove(id);
         }
 
+        public static IEnumerable<Employee> GetEmployees()
+        {
+            foreach (var entry in employees)
+            {
+                yield return entry.Value;
+            }
+        }
+
         #endregion
 
         #region Union Affiliation
@@ -50,7 +58,5 @@ namespace Payroll
             unionMembers.Remove(memberId);
         }
         #endregion
-
-
     }
 }

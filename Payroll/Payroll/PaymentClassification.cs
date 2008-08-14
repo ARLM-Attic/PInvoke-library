@@ -6,5 +6,6 @@ namespace Payroll
 {
     public abstract class PaymentClassification
     {
+        internal abstract void CalculatePay(Paycheck pc);
     }
 }

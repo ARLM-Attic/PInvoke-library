@@ -29,5 +29,14 @@ namespace Payroll
                 return account;
             }
         }
+
+        #region PaymentMethod Members
+
+        public void Pay(Paycheck pc)
+        {
+            //TODO: Pay directly.
+        }
+
+        #endregion
     }
 }

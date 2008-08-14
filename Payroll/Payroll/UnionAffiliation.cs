@@ -32,5 +32,14 @@ namespace Payroll
             return charges[date];
         }
         #endregion
+
+        #region Affiliation Members
+
+        public void CalculateDeductions(Paycheck pc)
+        {
+            // TODO: Calculate deducitions
+        }
+
+        #endregion
     }
 }

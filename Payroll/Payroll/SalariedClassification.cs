@@ -19,5 +19,10 @@ namespace Payroll
                 return salary;
             }
         }
+
+        internal override void CalculatePay(Paycheck pc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
