@@ -18,7 +18,6 @@ namespace Payroll
 
         public double Gross { get; set; }
         public double  Deductions { get; set; }
-
         public double Net { get { return Gross - Deductions; } }
 
         public string GetField(string name)
