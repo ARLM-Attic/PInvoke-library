@@ -36,7 +36,15 @@ namespace PayrollTest
                 testContextInstance = value;
             }
         }
-        #endregion 
+        #endregion
+
+        #region Operations
+        private static void Reset()
+        {
+            PayrollDatabase.Reset();
+            _nextId = 0;
+        }
+        #endregion
 
         #region Additional test attributes
         //
@@ -408,27 +416,33 @@ namespace PayrollTest
         [TestMethod]
         public void PaySingleSalariedTest()
         {
+            Reset();
+
             int id = NextId;
-            DateTime date = new DateTime(2008, 8,30);
+            DateTime date = new DateTime(2008, 8, 31);
             double salary = 2222.22;
 
             Transaction trans = new AddSalariedEmployee(id, "warren", "ms", salary);
             trans.Execute();
 
+            Employee e = PayrollDatabase.GetEmployee(id);
+            Assert.IsTrue(e.IsPayDay(date));
+
             PaydayTransaction pt = new PaydayTransaction(date);
-            trans.Execute();
+            pt.Execute();
 
             Paycheck pc = pt.GetPaycheck(id);
             Assert.IsNotNull(pc);
             Assert.AreEqual(salary, pc.Gross, delta);
             Assert.AreEqual(0.0, pc.Deductions, delta);
             Assert.AreEqual(salary, pc.Net, delta);
-            Assert.AreEqual("Hold", pc.GetField("Disposition"));
         }
 
         [TestMethod]
         public void PaySingleSalariedOnWrongDate()
         {
+            Reset();
+
             int id = NextId;
             DateTime date = new DateTime(2008, 8, 8);
 
@@ -436,10 +450,104 @@ namespace PayrollTest
             trans.Execute();
 
             PaydayTransaction pt = new PaydayTransaction(date);
-            trans.Execute();
+            pt.Execute();
 
             Paycheck pc = pt.GetPaycheck(id);
             Assert.IsNull(pc);
+        }
+
+        [TestMethod]
+        public void PaySingleHourlyTest()
+        {
+            Reset();
+
+            int id = NextId;
+            double hourlyRate = 33.33;
+            DateTime date = new DateTime(2008, 8, 15);
+
+            Transaction trans = new AddHourlyEmployee(id, "somebody", "somewhere", hourlyRate);
+            trans.Execute();
+
+            PaydayTransaction pt = new PaydayTransaction(date);
+            pt.Execute();
+
+            Paycheck pc = pt.GetPaycheck(id);
+            Assert.IsNotNull(pc);
+            Assert.AreEqual(0, pc.Gross, delta);
+            Assert.AreEqual(0, pc.Deductions, delta);
+            Assert.AreEqual(0, pc.Net, delta);
+        }
+
+        [TestMethod]
+        public void PaySingleHourlyOnWrongDate()
+        {
+            Reset();
+
+            int id = NextId;
+            double hourlyRate = 33.33;
+            DateTime date = new DateTime(2008, 8, 14);
+
+            Transaction trans = new AddHourlyEmployee(id, "somebody", "somewhere", hourlyRate);
+            trans.Execute();
+
+            PaydayTransaction pt = new PaydayTransaction(date);
+            pt.Execute();
+
+            Paycheck pc = pt.GetPaycheck(id);
+            Assert.IsNull(pc);
+        }
+
+        [TestMethod]
+        public void PaySingleHourlyOneTimeCard()
+        {
+            Reset();
+
+            int id = NextId;
+            double hourlyRate = 33.33;
+            DateTime date = new DateTime(2008, 8, 15); //Friday
+
+            Transaction trans = new AddHourlyEmployee(id, "somebody", "somewhere", hourlyRate);
+            trans.Execute();
+
+            trans = new TimeCardTransaction(id, date, new TimeSpan(2, 0, 0));
+            trans.Execute();
+
+            PaydayTransaction pt = new PaydayTransaction(date);
+            pt.Execute();
+
+            Paycheck pc = pt.GetPaycheck(id);
+            Assert.IsNotNull(pc);
+
+            Assert.AreEqual(2 * hourlyRate, pc.Gross, delta);
+            Assert.AreEqual(0, pc.Deductions, delta);
+            Assert.AreEqual(2 * hourlyRate, pc.Net, delta);
+        }
+
+        [TestMethod]
+        public void SalariedUnionMemberDuesTest()
+        {
+            Reset();
+            int id = NextId;
+            int memberId = NextId;
+            double salary = 1200.0;
+            double dues = 33.33;
+            DateTime date = new DateTime(2008, 8, 31);
+
+            Transaction trans = new AddSalariedEmployee(id, "someone", "someplace", salary);
+            trans.Execute();
+
+            trans = new ChangeMemberTransaction(id, memberId, dues);
+            trans.Execute();
+
+            PaydayTransaction pt = new PaydayTransaction(date);
+            pt.Execute();
+
+            Paycheck pc = pt.GetPaycheck(id);
+            Assert.IsNotNull(pc);
+
+            Assert.AreEqual(salary, pc.Gross, delta);
+            Assert.AreEqual(5 * dues, pc.Deductions, delta);
+            Assert.AreEqual(salary - 5 * dues, pc.Net, delta);
         }
         #endregion
     }

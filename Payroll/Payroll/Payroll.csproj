@@ -96,6 +96,7 @@
     <Compile Include="TimeCardTransaction.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="UnionAffiliation.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="WeeklySchedule.cs" />
   </ItemGroup>
   <ItemGroup>

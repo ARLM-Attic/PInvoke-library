@@ -13,6 +13,11 @@ namespace Payroll
             throw new NotImplementedException();
         }
 
+        public DateTime GetPayBeginDate(DateTime date)
+        {
+            return date.AddDays(-13);
+        }
+
         #endregion
     }
 }

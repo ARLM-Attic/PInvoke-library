@@ -10,7 +10,12 @@ namespace Payroll
 
         public bool IsPayDay(DateTime date)
         {
-            throw new NotImplementedException();
+            return date.DayOfWeek == DayOfWeek.Friday;
+        }
+
+        public DateTime GetPayBeginDate(DateTime date)
+        {
+            return date.AddDays(-6);
         }
 
         #endregion

@@ -17,7 +17,9 @@ namespace Payroll
 
         public Paycheck GetPaycheck(int empid)
         {
-            throw new NotImplementedException();
+            Paycheck pc;
+            paychecks.TryGetValue(empid, out pc);
+            return pc;
         }
 
         #region Transaction Members
@@ -29,7 +31,7 @@ namespace Payroll
                 if (e.IsPayDay(date))
                 {
                     Paycheck pc = e.Payday(date);
-                    paychecks.Add(e.Id, pc);
+                    paychecks[e.Id] = pc;
                 }
             }
         }

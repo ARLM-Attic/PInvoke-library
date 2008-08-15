@@ -6,6 +6,6 @@ namespace Payroll
 {
     public interface Affiliation
     {
-        void CalculateDeductions(Paycheck pc);
+        double CalculateDeductions(Paycheck pc);
     }
 }

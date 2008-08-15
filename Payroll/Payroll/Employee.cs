@@ -91,21 +91,30 @@ namespace Payroll
             }
         }
 
-        internal bool IsPayDay(DateTime date)
+        public bool IsPayDay(DateTime date)
         {
             return this.schedule.IsPayDay(date);
         }
 
-        internal Paycheck Payday(DateTime dateTime)
+        internal Paycheck Payday(DateTime date)
         {
-            Paycheck pc = new Paycheck();
+             DateTime beginDate = GetPayBeginDate(date);
+            Paycheck pc = new Paycheck(date, beginDate);
 
-            this.classification.CalculatePay(pc);
-            this.affiliation.CalculateDeductions(pc);
+            double grossPay = this.classification.CalculatePay(pc);
+            double deductions =  this.affiliation.CalculateDeductions(pc);
 
             this.Method.Pay(pc);
 
+            pc.Gross = grossPay;
+            pc.Deductions = deductions;
+
             return pc;
+        }
+
+        private DateTime GetPayBeginDate(DateTime date)
+        {
+            return this.schedule.GetPayBeginDate(date);
         }
     }
 }

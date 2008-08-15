@@ -46,9 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AuthoringTests.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Payroll\Payroll.csproj">
       <Project>{BF5ED7BA-9F0F-4FB3-BC22-0DD71CEE8E2D}</Project>
       <Name>Payroll</Name>

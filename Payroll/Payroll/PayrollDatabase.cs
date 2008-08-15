@@ -58,5 +58,11 @@ namespace Payroll
             unionMembers.Remove(memberId);
         }
         #endregion
+
+        public static void Reset()
+        {
+            employees.Clear();
+            unionMembers.Clear();
+        }
     }
 }

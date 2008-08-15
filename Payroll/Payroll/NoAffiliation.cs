@@ -8,9 +8,9 @@ namespace Payroll
     {
         #region Affiliation Members
 
-        public void CalculateDeductions(Paycheck pc)
+        public double CalculateDeductions(Paycheck pc)
         {
-            pc.Deductions = 0.0;
+            return 0.0;
         }
 
         #endregion

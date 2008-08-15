@@ -10,12 +10,19 @@ namespace Payroll
 
         public bool IsPayDay(DateTime date)
         {
-            return IsLastDayOfMoth(date);
+            return date.IsLastDayOfMonth();
         }
 
-        private bool IsLastDayOfMoth(DateTime date)
+ 
+
+        #endregion
+
+        #region PaymentSchedule Members
+
+
+        public DateTime GetPayBeginDate(DateTime date)
         {
-            return date.Day == DateTime.DaysInMonth(date.Year,date.Month);
+            return date.AddMonths(-1).AddDays(1);
         }
 
         #endregion

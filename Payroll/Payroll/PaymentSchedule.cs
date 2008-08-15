@@ -7,5 +7,7 @@ namespace Payroll
     public interface PaymentSchedule
     {
         bool IsPayDay(DateTime date);
+
+        DateTime GetPayBeginDate(DateTime date);
     }
 }

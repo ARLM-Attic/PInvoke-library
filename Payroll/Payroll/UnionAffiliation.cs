@@ -35,9 +35,20 @@ namespace Payroll
 
         #region Affiliation Members
 
-        public void CalculateDeductions(Paycheck pc)
+        public double CalculateDeductions(Paycheck pc)
         {
-            // TODO: Calculate deducitions
+            double deductions = 0;
+
+            int numberOfFriday = Util.NumberOfFridayBetweenDates(pc.BeginDate, pc.Date);
+            deductions += numberOfFriday * dues;
+
+            foreach (ServiceCharge charge in charges.Values)
+            {
+                if (charge.Date.Between(pc.BeginDate, pc.Date))
+                    deductions += charge.Amount;
+            }
+
+            return deductions;
         }
 
         #endregion

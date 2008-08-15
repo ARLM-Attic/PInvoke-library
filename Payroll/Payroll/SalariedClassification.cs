@@ -20,9 +20,9 @@ namespace Payroll
             }
         }
 
-        internal override void CalculatePay(Paycheck pc)
+        internal override double CalculatePay(Paycheck pc)
         {
-            throw new NotImplementedException();
+            return this.salary;
         }
     }
 }
