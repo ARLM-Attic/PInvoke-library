@@ -5,8 +5,6 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
 
-using System.Windows.Forms;
-
 namespace Win32
 {
     public static partial class User32
@@ -16,6 +14,62 @@ namespace Win32
 #else
         private const string DllName = "user32.dll";
 #endif
+
+        #region Win32
+
+        public delegate int WndProc(IntPtr hwnd, uint msg, uint wParam, uint lParam);
+
+        //[DllImport(DllName, SetLastError = true)]
+        //public extern static int RegisterClassEx([MarshalAs(UnmanagedType.Struct)]ref WNDCLASSEX wndClassEx);
+
+        [DllImport(DllName, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.U2)]
+        public static extern short RegisterClassEx(ref WNDCLASSEX lpwcx);
+
+        [DllImport(DllName, SetLastError = true)]
+        public extern static bool UnregisterClass(string lpClassName, IntPtr hInstance);
+
+        //[DllImport(DllName)]
+        //public extern static long DefWindowProc(IntPtr hWnd, uint msg, int wParam, [MarshalAs(UnmanagedType.U4)] int lParam);
+
+        [DllImport(DllName)]
+        public extern static int DefWindowProc(IntPtr hwnd, uint msg, uint wParam, uint lParam);
+
+        [DllImport(DllName, SetLastError = true)]
+        public static extern IntPtr CreateWindowEx(
+            uint dwExStyle,
+            string lpClassName,
+            string lpWindowName,
+            uint dwStyle,
+            int x,
+            int y,
+            int nWidth,
+            int nHeight,
+            IntPtr hWndParent,
+            IntPtr hMenu,
+            IntPtr hInstance,
+            IntPtr lpParam);
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public struct WNDCLASSEX
+        {
+            [MarshalAs(UnmanagedType.U4)]
+            public int cbSize;
+            [MarshalAs(UnmanagedType.U4)]
+            public CS style;
+            public WndProc lpfnWndProc;
+            public int cbClsExtra;
+            public int cbWndExtra;
+            public IntPtr hInstance;
+            public IntPtr hIcon;
+            public IntPtr hCursor;
+            public IntPtr hbrBackground;
+            public string lpszMenuName;
+            public string lpszClassName;
+            public IntPtr hIconSm;
+        }
+
+        #endregion
 
         #region keyboard
         [DllImport(DllName)]
@@ -84,10 +138,9 @@ namespace Win32
         [DllImport(DllName)]
         public extern static IntPtr SetWindowLong(IntPtr hwnd, GWL nIndex, IntPtr dwNewLong);
 
-        public delegate int WndProc(IntPtr hwnd, uint msg, uint wParam, int lParam);
+ 
 
-        [DllImport(DllName)]
-        public extern static int DefWindowProc(IntPtr hwnd, uint msg, uint wParam, int lParam);
+
 
         [DllImport(DllName)]
         public extern static int CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hwnd, uint msg, uint wParam, int lParam);
@@ -843,61 +896,3 @@ namespace Win32
         #endregion
     }
 }
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-//public static void HideWindow(IntPtr hWnd)
-//{
-//    Win32.Window.ShowWindow(hWnd, Win32.Window.SWP.SW_HIDE);
-//    Win32.Window.EnableWindow(hWnd, false);
-
-//    //Another way
-//    //Win32.Window.SetWindowPos(hWnd, Win32.Window.HWND.HWND_BOTTOM, 0, 0, 0, 0, Win32.Window.SetWindowPosFlags.SWP_NOSIZE | Win32.Window.SetWindowPosFlags.SWP_NOMOVE | Win32.Window.SetWindowPosFlags.SWP_HIDEWINDOW);
-//}
-
-//Win32.Window.InvalidateRect(hTaskbar,0, true);
-//Win32.Window.UpdateWindow(hTaskbar);
-
-//            IntPtr hTaskbar = Win32.Window.FindWindow("HHTaskBar", "");
-
-
-
-
-//        private void button1_Click(object sender, EventArgs e)
-//        {
-//            Win32.Window.HideWindow(this.Handle);
-
-//        }
-
-//        private void Form1_Deactivate(object sender, EventArgs e)
-//        {
-//            //Win32.Window.SetWindowPos(this.Handle, Win32.Window.HWND.HWND_TOPMOST, 0, 0, 0, 0, Win32.Window.ShowWindowPosFlags.SWP_SHOWWINDOW | Win32.Window.ShowWindowPosFlags.SWP_NOSIZE | Win32.Window.ShowWindowPosFlags.SWP_NOMOVE);
-//        }
-
-//        private void Form1_Load(object sender, EventArgs e)
-//        {
-//            label1.Text = "Form 1 Loaded";
-//        }
-
-//        private void button2_Click(object sender, EventArgs e)
-//        {
-//            IntPtr phoneWindow = Win32.Window.FindWindow("Dialog", "Phone - Incoming");
-
-//            if (phoneWindow != IntPtr.Zero)
-//            {
-//                Win32.Window.ShowWindow(phoneWindow, Win32.Window.SWP.SW_HIDE);
-//                Win32.Window.EnableWindow(phoneWindow, false);
-//            }
-//        }
-
-//        private void button3_Click(object sender, EventArgs e)
-//        {
-//            IntPtr phoneWindow = Win32.Window.FindWindow("Dialog", "Phone - Incoming");
-
-//            if (phoneWindow != IntPtr.Zero)
-//            {
-//                Win32.Window.ShowWindow(phoneWindow, Win32.Window.SWP.SW_SHOW);
-//                Win32.Window.EnableWindow(phoneWindow, true);
-//                // MessageBox.Show("Success");
-//            }
-//        }
