@@ -8,9 +8,9 @@ namespace Win32
     public static partial class Shell32
     {
 #if PocketPC
-        private const string Shell32Dll = "coredll.dll";
+        private const string Shell32Dll = "aygshell.dll";
 #else
-        private const string Shell32Dll = "user32.dll";
+        private const string Shell32Dll = "shell32.dll";
 #endif
 
         #region dll imports
@@ -126,6 +126,392 @@ namespace Win32
             SHGetSpecialFolderPath((IntPtr)0, ref path, id, false);
             return path;
         }
+
+        /// <summary>
+        /// Show or hide file extentions of the system.(Wrapper)
+        /// </summary>
+        /// <param name="bShow">True to show, false to hide.</param>
+
+        public static void ShowFileExtension(bool bShow)
+        {
+            //let error bubble up.
+            Shell32.SHELLSTATE state = new Shell32.SHELLSTATE();
+            state.fShowExtensions = (uint)(bShow ? 1 : 0);
+            Shell32.SHGetSetSettings(ref state, Shell32.SSF.SSF_SHOWEXTENSIONS, true);
+        }
+
+        [DllImport("shell32.dll")]
+        public extern static void SHGetSetSettings(ref SHELLSTATE lpss, SSF dwMask, bool bSet);
+
+        #region SSF
+        [Flags]
+        public enum SSF
+        {
+            SSF_SHOWALLOBJECTS = 0x00000001,
+            SSF_SHOWEXTENSIONS = 0x00000002,
+            SSF_HIDDENFILEEXTS = 0x00000004,
+            SSF_SERVERADMINUI = 0x00000004,
+            SSF_SHOWCOMPCOLOR = 0x00000008,
+            SSF_SORTCOLUMNS = 0x00000010,
+            SSF_SHOWSYSFILES = 0x00000020,
+            SSF_DOUBLECLICKINWEBVIEW = 0x00000080,
+            SSF_SHOWATTRIBCOL = 0x00000100,
+            SSF_DESKTOPHTML = 0x00000200,
+            SSF_WIN95CLASSIC = 0x00000400,
+            SSF_DONTPRETTYPATH = 0x00000800,
+            SSF_SHOWINFOTIP = 0x00002000,
+            SSF_MAPNETDRVBUTTON = 0x00001000,
+            SSF_NOCONFIRMRECYCLE = 0x00008000,
+            SSF_HIDEICONS = 0x00004000,
+            SSF_FILTER = 0x00010000,
+            SSF_WEBVIEW = 0x00020000,
+            SSF_SHOWSUPERHIDDEN = 0x00040000,
+            SSF_SEPPROCESS = 0x00080000,
+            SSF_NONETCRAWLING = 0x00100000,
+            SSF_STARTPANELON = 0x00200000,
+            SSF_SHOWSTARTPAGE = 0x00400000
+        }
+        #endregion
+
+        #region SHELLSTATE
+        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        public struct SHELLSTATE
+        {
+
+            /// fShowAllObjects : 1
+            ///fShowExtensions : 1
+            ///fNoConfirmRecycle : 1
+            ///fShowSysFiles : 1
+            ///fShowCompColor : 1
+            ///fDoubleClickInWebView : 1
+            ///fDesktopHTML : 1
+            ///fWin95Classic : 1
+            ///fDontPrettyPath : 1
+            ///fShowAttribCol : 1
+            ///fMapNetDrvBtn : 1
+            ///fShowInfoTip : 1
+            ///fHideIcons : 1
+            ///fWebView : 1
+            ///fFilter : 1
+            ///fShowSuperHidden : 1
+            ///fNoNetCrawling : 1
+            public uint bitvector1;
+
+            /// DWORD->unsigned int
+            public uint dwWin95Unused;
+
+            /// UINT->unsigned int
+            public uint uWin95Unused;
+
+            /// LONG->int
+            public int lParamSort;
+
+            /// int
+            public int iSortDirection;
+
+            /// UINT->unsigned int
+            public uint version;
+
+            /// UINT->unsigned int
+            public uint uNotUsed;
+
+            /// fSepProcess : 1
+            ///fStartPanelOn : 1
+            ///fShowStartPage : 1
+            ///fSpareFlags : 13
+            public uint bitvector2;
+
+            public uint fShowAllObjects
+            {
+                get
+                {
+                    return ((uint)((this.bitvector1 & 1u)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)((value | this.bitvector1)));
+                }
+            }
+
+            public uint fShowExtensions
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 2u)
+                                / 2)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 2)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fNoConfirmRecycle
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 4u)
+                                / 4)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 4)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fShowSysFiles
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 8u)
+                                / 8)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 8)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fShowCompColor
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 16u)
+                                / 16)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 16)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fDoubleClickInWebView
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 32u)
+                                / 32)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 32)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fDesktopHTML
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 64u)
+                                / 64)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 64)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fWin95Classic
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 128u)
+                                / 128)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 128)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fDontPrettyPath
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 256u)
+                                / 256)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 256)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fShowAttribCol
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 512u)
+                                / 512)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 512)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fMapNetDrvBtn
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 1024u)
+                                / 1024)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 1024)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fShowInfoTip
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 2048u)
+                                / 2048)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 2048)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fHideIcons
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 4096u)
+                                / 4096)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 4096)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fWebView
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 8192u)
+                                / 8192)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 8192)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fFilter
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 16384u)
+                                / 16384)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 16384)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fShowSuperHidden
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 32768u)
+                                / 32768)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 32768)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fNoNetCrawling
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector1 & 65536u)
+                                / 65536)));
+                }
+                set
+                {
+                    this.bitvector1 = ((uint)(((value * 65536)
+                                | this.bitvector1)));
+                }
+            }
+
+            public uint fSepProcess
+            {
+                get
+                {
+                    return ((uint)((this.bitvector2 & 1u)));
+                }
+                set
+                {
+                    this.bitvector2 = ((uint)((value | this.bitvector2)));
+                }
+            }
+
+            public uint fStartPanelOn
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector2 & 2u)
+                                / 2)));
+                }
+                set
+                {
+                    this.bitvector2 = ((uint)(((value * 2)
+                                | this.bitvector2)));
+                }
+            }
+
+            public uint fShowStartPage
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector2 & 4u)
+                                / 4)));
+                }
+                set
+                {
+                    this.bitvector2 = ((uint)(((value * 4)
+                                | this.bitvector2)));
+                }
+            }
+
+            public uint fSpareFlags
+            {
+                get
+                {
+                    return ((uint)(((this.bitvector2 & 65528u)
+                                / 8)));
+                }
+                set
+                {
+                    this.bitvector2 = ((uint)(((value * 8)
+                                | this.bitvector2)));
+                }
+            }
+        }
+        #endregion
     }
 }
 

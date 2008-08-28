@@ -17,6 +17,9 @@ namespace Win32
 
         #region Win32
 
+        public const int CW_USEDEFAULT = unchecked((int)0x80000000);
+
+
         public delegate int WndProc(IntPtr hwnd, uint msg, uint wParam, uint lParam);
 
         //[DllImport(DllName, SetLastError = true)]
@@ -29,11 +32,9 @@ namespace Win32
         [DllImport(User32Dll, SetLastError = true)]
         public extern static bool UnregisterClass(string lpClassName, IntPtr hInstance);
 
-        //[DllImport(DllName)]
-        //public extern static long DefWindowProc(IntPtr hWnd, uint msg, int wParam, [MarshalAs(UnmanagedType.U4)] int lParam);
-
         [DllImport(User32Dll)]
         public extern static int DefWindowProc(IntPtr hwnd, uint msg, uint wParam, uint lParam);
+
 
         [DllImport(User32Dll, SetLastError = true)]
         public static extern IntPtr CreateWindowEx(
@@ -50,7 +51,22 @@ namespace Win32
             IntPtr hInstance,
             IntPtr lpParam);
 
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        [DllImport(User32Dll)]
+        public static extern bool GetMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax);
+
+        [DllImport(User32Dll)]
+        public static extern bool TranslateMessage([In] ref MSG lpMsg);
+
+        [DllImport(User32Dll)]
+        public static extern IntPtr DispatchMessage([In] ref MSG lpmsg);
+
+        [DllImport(User32Dll)]
+        public static extern IntPtr BeginPaint(IntPtr hwnd, out GDI32.PAINTSTRUCT lpPaint);
+
+        [DllImport(User32Dll)]
+        public static extern IntPtr EndPaint(IntPtr hwnd, out GDI32.PAINTSTRUCT lpPaint);
+
+        [StructLayout(LayoutKind.Sequential)]
         public struct WNDCLASSEX
         {
             [MarshalAs(UnmanagedType.U4)]
@@ -69,6 +85,47 @@ namespace Win32
             public IntPtr hIconSm;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MSG
+        {
+            public IntPtr hwnd;
+            public UInt32 message;
+            public IntPtr wParam;
+            public IntPtr lParam;
+            public UInt32 time;
+            public GDI32.POINT pt;
+        }
+
+
+        #endregion
+
+        [DllImport(User32Dll)]
+        public static extern bool GetClientRect(IntPtr hWnd, out GDI32.RECT lpRect);
+
+        #region DrawText
+
+        [DllImport(User32Dll)]
+        public static extern int DrawText(IntPtr hDC, string lpString, int nCount, ref GDI32.RECT lpRect, DT uFormat);
+
+        [Flags]
+        public enum DT : uint
+        {
+            DT_TOP = 0x00000000,
+            DT_LEFT = 0x00000000,
+            DT_CENTER = 0x00000001,
+            DT_RIGHT = 0x00000002,
+            DT_VCENTER = 0x00000004,
+            DT_BOTTOM = 0x00000008,
+            DT_WORDBREAK = 0x00000010,
+            DT_SINGLELINE = 0x00000020,
+            DT_EXPANDTABS = 0x00000040,
+            DT_TABSTOP = 0x00000080,
+            DT_NOCLIP = 0x00000100,
+            DT_EXTERNALLEADING = 0x00000200,
+            DT_CALCRECT = 0x00000400,
+            DT_NOPREFIX = 0x00000800,
+            DT_INTERNAL = 0x00001000
+        }
         #endregion
 
         #region Cursor
@@ -345,51 +402,6 @@ namespace Win32
 
         #endregion
 
-        #region CeRunAppAtTime
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SystemTime
-        {
-
-            public short m_year;
-
-            public short m_month;
-
-            public short m_dayOfWeek;
-
-            public short m_day;
-
-            public short m_hour;
-
-            public short m_minute;
-
-            public short m_second;
-
-            public short m_milliseconds;
-
-            public SystemTime(DateTime value)
-            {
-                m_year = (Int16)value.Year;
-
-                m_month = (Int16)value.Month;
-
-                m_dayOfWeek = (Int16)value.DayOfWeek;
-
-                m_day = (Int16)value.Day;
-
-                m_hour = (Int16)value.Hour;
-
-                m_minute = (Int16)value.Minute;
-
-                m_second = (Int16)value.Second;
-
-                m_milliseconds = (Int16)value.Millisecond;
-            }
-        }
-
-        [DllImport("coredll")]
-        public static extern bool CeRunAppAtTime(string pwszAppName, ref SystemTime lpTime);
-
-        #endregion
 
         [DllImport(User32Dll)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SWP uFlags);
@@ -438,6 +450,42 @@ namespace Win32
 
         [DllImport(User32Dll, SetLastError = true)]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+
+        [DllImport(User32Dll)]
+        public static extern bool LockWorkStation();
+
+        #region GetLastInputInfo
+        [DllImport(User32Dll)]
+        public static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct LASTINPUTINFO
+        {
+            public int cbSize;
+            public int dwTime;
+        }
+
+        /// <summary>
+        /// Get the tick count since the last user input. (Wrapper)
+        /// </summary>
+        /// <returns>The tick count since the last user input.</returns>
+        public static int GetLastInputTime()
+        {
+            LASTINPUTINFO lastInPut = new LASTINPUTINFO();
+            lastInPut.cbSize = (int)Marshal.SizeOf(lastInPut);
+            lastInPut.dwTime = 0;
+
+            if (!GetLastInputInfo(ref lastInPut))
+            {
+                throw new Exception(Marshal.GetLastWin32Error().ToString());
+            }
+
+            return lastInPut.dwTime; // (int)TimeSpan.TicksPerMillisecond;
+        }
+
+        #endregion
 
         #region User input
         [DllImport(User32Dll)]
@@ -1040,6 +1088,167 @@ namespace Win32
             CS_GLOBALCLASS = 0x4000,
             CS_IME = 0x00010000,
             CS_DROPSHADOW = 0x00020000
+        }
+
+        #endregion
+
+        [DllImport(User32Dll)]
+        public static extern bool BlockInput(bool fBlockIt);
+
+        [DllImport(User32Dll)]
+        private static extern bool PrintWindow(IntPtr hwnd, IntPtr hdcBlt, uint nFlags);
+
+        [DllImport(User32Dll, SetLastError = true)]
+        public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+
+        [DllImport(User32Dll, CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, WM Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport(User32Dll)]
+        public static extern void mouse_event(MOUSEEVENTF dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
+
+        [DllImport(User32Dll)]
+        public static extern bool GetCursorPos(out Point lpPoint);
+
+        [DllImport(User32Dll, SetLastError = true)]
+        public static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
+
+        [DllImport(User32Dll)]
+        public static extern IntPtr GetMessageExtraInfo();
+
+        #region Hook
+        [DllImport(User32Dll, SetLastError = true)]
+        static extern IntPtr SetWindowsHookEx(HookType hook, HookProc callback,
+           IntPtr hMod, uint dwThreadId);
+
+        [DllImport(User32Dll, SetLastError = true)]
+        static extern IntPtr SetWindowsHookEx(HookType hook, LowLevelKeyboardProc callback,
+           IntPtr hMod, uint dwThreadId);
+
+        [DllImport(User32Dll, SetLastError = true)]
+        static extern IntPtr SetWindowsHookEx(HookType code, LowLevelMouseProc func,
+            IntPtr hInstance, int threadID);
+
+        delegate int HookProc(int code, IntPtr wParam, IntPtr lParam);
+
+        delegate int LowLevelKeyboardProc(int nCode, WM wParam, [In]KBDLLHOOKSTRUCT lParam);
+
+        delegate int LowLevelMouseProc(int code, WM wParam, [In]MSLLHOOKSTRUCT lParam);
+
+        public enum HookType : int
+        {
+            WH_JOURNALRECORD = 0,
+            WH_JOURNALPLAYBACK = 1,
+            WH_KEYBOARD = 2,
+            WH_GETMESSAGE = 3,
+            WH_CALLWNDPROC = 4,
+            WH_CBT = 5,
+            WH_SYSMSGFILTER = 6,
+            WH_MOUSE = 7,
+            WH_HARDWARE = 8,
+            WH_DEBUG = 9,
+            WH_SHELL = 10,
+            WH_FOREGROUNDIDLE = 11,
+            WH_CALLWNDPROCRET = 12,
+            WH_KEYBOARD_LL = 13,
+            WH_MOUSE_LL = 14
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public class MSLLHOOKSTRUCT
+        {
+            public POINT pt;
+            public int mouseData;
+            public int flags;
+            public int time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public class KBDLLHOOKSTRUCT
+        {
+            public int vkCode;
+            public int scanCode;
+            public int flags;
+            public int time;
+            public IntPtr dwExtraInfo;
+        }
+        #endregion
+
+        #region POINT
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public POINT(int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+
+            public static implicit operator System.Drawing.Point(POINT p)
+            {
+                return new System.Drawing.Point(p.X, p.Y);
+            }
+
+            public static implicit operator POINT(System.Drawing.Point p)
+            {
+                return new POINT(p.X, p.Y);
+            }
+        }
+
+        #endregion
+
+        #region SendInput structs
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MOUSEINPUT
+        {
+            public int dx;
+            public int dy;
+            public uint mouseData;
+            public MOUSEEVENTF dwFlags;
+            public uint time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct KEYBDINPUT
+        {
+            public ushort wVk;
+            public ushort wScan;
+            public uint dwFlags;
+            public uint time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct HARDWAREINPUT
+        {
+            public uint uMsg;
+            public ushort wParamL;
+            public ushort wParamH;
+        }
+
+        [StructLayout(LayoutKind.Explicit)]
+        public struct INPUT
+        {
+            [FieldOffset(0)]
+            public INPUT_TYPE type;
+            [FieldOffset(4)]
+            public MOUSEINPUT mi;
+            [FieldOffset(4)]
+            public KEYBDINPUT ki;
+            [FieldOffset(4)]
+            public HARDWAREINPUT hi;
+        }
+
+        public enum INPUT_TYPE
+        {
+            INPUT_MOUSE = 0,
+            INPUT_KEYBOARD = 1,
+            INPUT_HARDWARE = 2
         }
 
         #endregion

@@ -159,17 +159,12 @@ namespace Win32
 
         #endregion
 
-        /// <summary>
-        /// Never P/Invoke to GetLastError.  Call Marshal.GetLastWin32Error instead!
-        /// </summary>
-        /// <returns>
-        /// System Error Codes :
-        /// http://msdn2.microsoft.com/en-us/library/ms681381.aspx
-        /// </returns>
         public static int GetLastError()
         {
             throw new Exception("Never P/Invoke to GetLastError.  Call Marshal.GetLastWin32Error instead!");
         }
+
+      
 
 
     }
