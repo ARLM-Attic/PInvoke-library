@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+//This file contains the Win32 API that are specific to the desktop Windows.
+
+//Created by Warren Tang on 8/28/2008
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

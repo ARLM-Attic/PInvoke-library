@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+//This file contains the common Win32 API of the desktop Windows and the Windows CE/Mobile. 
+
+//Created by Warren Tang on 8/8/2008
+
+using System;
 
 using System.Collections.Generic;
 using System.Text;

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WinCE32")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("KLOO")]
+[assembly: AssemblyCompany("Warren Tang")]
 [assembly: AssemblyProduct("WinCE32")]
-[assembly: AssemblyCopyright("Copyright © KLOO 2008")]
+[assembly: AssemblyCopyright("Copyright © Warren Tang 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("0.1.0.0")]
 

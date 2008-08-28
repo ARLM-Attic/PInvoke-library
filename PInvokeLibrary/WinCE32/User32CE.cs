@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+//This file contains the Win32 API that are specific to the Windows CE/Mobile.
+
+//Created by Warren Tang on 8/8/2008
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;

@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+//This file demonstrates how to build a Win32 Windows program using C#. 
+
+//Created by Warren Tang on 8/27/2008
+
+using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
@@ -11,6 +16,7 @@ namespace Win32Demo
     /// </summary>
     class Program
     {
+        //This is WinMain.
         static void Main(string[] args)
         {
             IntPtr hInstance = Marshal.GetHINSTANCE(typeof(Program).Module);
@@ -31,9 +37,9 @@ namespace Win32Demo
             }
         }
 
+        //Register window class
         private static void MyRegisterClass(IntPtr hInstance, string wndClassName)
         {
-            //Register window class
             User32.WNDCLASSEX wcex = new User32.WNDCLASSEX()
             {
                 cbSize = Marshal.SizeOf(typeof(User32.WNDCLASSEX)),
@@ -56,9 +62,9 @@ namespace Win32Demo
                 throw new Win32Exception(Marshal.GetLastWin32Error());
         }
 
+        //Create window
         private static void InitInstance(IntPtr hInstance, string wndClassName, string wndName)
         {
-            //Create window
             IntPtr hWnd = User32.CreateWindowEx(
                 User32.WS_EX.WS_EX_NONE,
                 wndClassName,
