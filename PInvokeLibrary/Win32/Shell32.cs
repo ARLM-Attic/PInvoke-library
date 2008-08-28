@@ -8,9 +8,9 @@ namespace Win32
     public static partial class Shell32
     {
 #if PocketPC
-        private const string DllName = "coredll.dll";
+        private const string Shell32Dll = "coredll.dll";
 #else
-        private const string DllName = "user32.dll";
+        private const string Shell32Dll = "user32.dll";
 #endif
 
         #region dll imports
@@ -19,7 +19,7 @@ namespace Win32
         [DllImport("aygshell.dll")]
         public static extern int SHDeviceLockAndPrompt();
 
-        [DllImport(DllName)]
+        [DllImport(Shell32Dll)]
         public static extern int SHGetSpecialFolderPath(
             IntPtr hwndOwner, ref string lpszPath, CSIDL nFolder, bool fCreate);
 
@@ -67,13 +67,13 @@ namespace Win32
         //    public int bottom;
         //}
 
-        [DllImport(DllName)]
+        [DllImport(Shell32Dll)]
         public extern static uint SipGetInfo(SIPINFO pSipInfo);
 
-        [DllImport(DllName)]
+        [DllImport(Shell32Dll)]
         public extern static uint SipSetInfo(SIPINFO pSipInfo);
 
-        [DllImport(DllName)]
+        [DllImport(Shell32Dll)]
         public extern static void SipShowIM(SIPF dwFlag);
 
         public class SIPINFO
@@ -100,7 +100,7 @@ namespace Win32
         public const uint SIP_STATUS_UNAVAILABLE = 0;
         public const uint SIP_STATUS_AVAILABLE = 1;
 
-        [DllImport(DllName)]
+        [DllImport(Shell32Dll)]
         public extern static uint SipStatus();
         #endregion
 

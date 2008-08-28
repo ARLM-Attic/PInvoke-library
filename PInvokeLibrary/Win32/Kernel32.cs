@@ -10,9 +10,9 @@ namespace Win32
     public static partial class Kernel32
     {
 #if PocketPC
-        private const string DllName = "coredll.dll";
+        private const string Kernel32Dll = "coredll.dll";
 #else
-        private const string DllName = "kernel32.dll";
+        private const string Kernel32Dll = "kernel32.dll";
 #endif
 
         #region GetSystemPowerStatusEx[2]
@@ -129,29 +129,29 @@ namespace Win32
         }
 
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern int SetSystemPowerState(string psState, PowerState StateFlags, PowerDeviceFlags Options); //POWER_FORCE
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern IntPtr SetPowerRequirement(
             String pvDevice, CEDevicePowerState DeviceState, PowerDeviceFlags DeviceFlags, IntPtr pvSystemState, int StateFlags);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern uint ReleasePowerRequirement(IntPtr hPowerReq);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern int SetDevicePower(
             string pvDevice,
             PowerDeviceFlags dwDeviceFlags,
             CEDevicePowerState DeviceState);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern int GetDevicePower(
             string pvDevice,
             PowerDeviceFlags dwDeviceFlags,
             ref CEDevicePowerState DeviceState);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(Kernel32Dll, SetLastError = true)]
         public static extern int DevicePowerNotify(
             string device,
             CEDevicePowerState state,

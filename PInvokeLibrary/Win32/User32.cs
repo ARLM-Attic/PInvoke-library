@@ -10,9 +10,9 @@ namespace Win32
     public static partial class User32
     {
 #if PocketPC
-        private const string DllName = "coredll.dll";
+        private const string User32Dll = "coredll.dll";
 #else
-        private const string DllName = "user32.dll";
+        private const string User32Dll = "user32.dll";
 #endif
 
         #region Win32
@@ -22,25 +22,25 @@ namespace Win32
         //[DllImport(DllName, SetLastError = true)]
         //public extern static int RegisterClassEx([MarshalAs(UnmanagedType.Struct)]ref WNDCLASSEX wndClassEx);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.U2)]
-        public static extern short RegisterClassEx(ref WNDCLASSEX lpwcx);
+        public static extern short RegisterClassEx([In] ref WNDCLASSEX lpwcx);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public extern static bool UnregisterClass(string lpClassName, IntPtr hInstance);
 
         //[DllImport(DllName)]
         //public extern static long DefWindowProc(IntPtr hWnd, uint msg, int wParam, [MarshalAs(UnmanagedType.U4)] int lParam);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public extern static int DefWindowProc(IntPtr hwnd, uint msg, uint wParam, uint lParam);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern IntPtr CreateWindowEx(
-            uint dwExStyle,
+            WS_EX dwExStyle,
             string lpClassName,
             string lpWindowName,
-            uint dwStyle,
+            WS dwStyle,
             int x,
             int y,
             int nWidth,
@@ -71,8 +71,33 @@ namespace Win32
 
         #endregion
 
+        #region Cursor
+        [DllImport(User32Dll, SetLastError = true)]
+        public static extern IntPtr LoadCursor(IntPtr hInstance, IDC lpCursorName);
+
+        public enum IDC
+        {
+            IDC_ARROW = 32512,
+            IDC_IBEAM = 32513,
+            IDC_WAIT = 32514,
+            IDC_CROSS = 32515,
+            IDC_UPARROW = 32516,
+            IDC_SIZE = 32640,
+            IDC_ICON = 32641,
+            IDC_SIZENWSE = 32642,
+            IDC_SIZENESW = 32643,
+            IDC_SIZEWE = 32644,
+            IDC_SIZENS = 32645,
+            IDC_SIZEALL = 32646,
+            IDC_NO = 32648,
+            IDC_APPSTARTING = 32650,
+            IDC_HELP = 32651
+        }
+
+        #endregion
+
         #region keyboard
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern int GetKeyboardType(GKT nTypeFlag);
 
         public enum GKT
@@ -84,10 +109,10 @@ namespace Win32
         #endregion
 
         #region Scroll bar
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern int GetScrollInfo(IntPtr hwnd, SB fnBar, ref SCROLLINFO lpsi);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern int SetScrollInfo(IntPtr hwnd, SB fnBar, ref SCROLLINFO lpsi, bool fRedraw);
 
         public enum SB : int
@@ -129,21 +154,23 @@ namespace Win32
 
         #region SetWindowLong
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public extern static void SetWindowLong(IntPtr hwnd, GWL nIndex, int dwNewLong);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public extern static IntPtr SetWindowLong(IntPtr hwnd, GWL nIndex, IntPtr dwNewLong);
 
- 
 
 
 
-        [DllImport(DllName)]
+
+        [DllImport(User32Dll)]
         public extern static int CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hwnd, uint msg, uint wParam, int lParam);
+
+        #endregion
 
         #region GWL
         public enum GWL : int
@@ -193,7 +220,129 @@ namespace Win32
             WS_POPUPWINDOW = WS_POPUP | WS_BORDER | WS_SYSMENU,
             WS_CHILDWINDOW = WS_CHILD,
         }
+
+        [DllImport(User32Dll, SetLastError = true)]
+        public static extern void PostQuitMessage(int nExitCode);
+
         #endregion
+
+        #region Entented Window Styles
+
+        [Flags]
+        public enum WS_EX : uint
+        {
+            WS_EX_NONE = 0,
+            /// <summary>
+            /// Specifies that a window created with this style accepts drag-drop files.
+            /// </summary>
+            WS_EX_ACCEPTFILES = 0x00000010,
+            /// <summary>
+            /// Forces a top-level window onto the taskbar when the window is visible.
+            /// </summary>
+            WS_EX_APPWINDOW = 0x00040000,
+            /// <summary>
+            /// Specifies that a window has a border with a sunken edge.
+            /// </summary>
+            WS_EX_CLIENTEDGE = 0x00000200,
+            /// <summary>
+            /// Windows XP: Paints all descendants of a window in bottom-to-top painting order using double-buffering. For more information, see Remarks. This cannot be used if the window has a class style of either CS_OWNDC or CS_CLASSDC.
+            /// </summary>
+            WS_EX_COMPOSITED = 0x02000000,
+            /// <summary>
+            /// Includes a question mark in the title bar of the window. When the user clicks the question mark, the cursor changes to a question mark with a pointer. If the user then clicks a child window, the child receives a WM_HELP message. The child window should pass the message to the parent window procedure, which should call the WinHelp function using the HELP_WM_HELP command. The Help application displays a pop-up window that typically contains help for the child window.
+            /// WS_EX_CONTEXTHELP cannot be used with the WS_MAXIMIZEBOX or WS_MINIMIZEBOX styles.
+            /// </summary>
+            WS_EX_CONTEXTHELP = 0x00000400,
+            /// <summary>
+            /// The window itself contains child windows that should take part in dialog box navigation. If this style is specified, the dialog manager recurses into children of this window when performing navigation operations such as handling the TAB key, an arrow key, or a keyboard mnemonic.
+            /// </summary>
+            WS_EX_CONTROLPARENT = 0x00010000,
+            /// <summary>
+            /// Creates a window that has a double border; the window can, optionally, be created with a title bar by specifying the WS_CAPTION style in the dwStyle parameter.
+            /// </summary>
+            WS_EX_DLGMODALFRAME = 0x00000001,
+            /// <summary>
+            /// Windows 2000/XP: Creates a layered window. Note that this cannot be used for child windows. Also, this cannot be used if the window has a class style of either CS_OWNDC or CS_CLASSDC.
+            /// </summary>
+            WS_EX_LAYERED = 0x00080000,
+            /// <summary>
+            /// Arabic and Hebrew versions of Windows 98/Me, Windows 2000/XP: Creates a window whose horizontal origin is on the right edge. Increasing horizontal values advance to the left.
+            /// </summary>
+            WS_EX_LAYOUTRTL = 0x00400000,
+            /// <summary>
+            /// Creates a window that has generic left-aligned properties. This is the default.
+            /// </summary>
+            WS_EX_LEFT = 0x00000000,
+            /// <summary>
+            /// If the shell language is Hebrew, Arabic, or another language that supports reading order alignment, the vertical scroll bar (if present) is to the left of the client area. For other languages, the style is ignored.
+            /// </summary>
+            WS_EX_LEFTSCROLLBAR = 0x00004000,
+            /// <summary>
+            /// The window text is displayed using left-to-right reading-order properties. This is the default.
+            /// </summary>
+            WS_EX_LTRREADING = 0x00000000,
+            /// <summary>
+            /// Creates a multiple-document interface (MDI) child window.
+            /// </summary>
+            WS_EX_MDICHILD = 0x00000040,
+            /// <summary>
+            /// Windows 2000/XP: A top-level window created with this style does not become the foreground window when the user clicks it. The system does not bring this window to the foreground when the user minimizes or closes the foreground window.
+            /// To activate the window, use the SetActiveWindow or SetForegroundWindow function.
+            /// The window does not appear on the taskbar by default. To force the window to appear on the taskbar, use the WS_EX_APPWINDOW style.
+            /// </summary>
+            WS_EX_NOACTIVATE = 0x08000000,
+            /// <summary>
+            /// Windows 2000/XP: A window created with this style does not pass its window layout to its child windows.
+            /// </summary>
+            WS_EX_NOINHERITLAYOUT = 0x00100000,
+            /// <summary>
+            /// Specifies that a child window created with this style does not send the WM_PARENTNOTIFY message to its parent window when it is created or destroyed.
+            /// </summary>
+            WS_EX_NOPARENTNOTIFY = 0x00000004,
+            /// <summary>
+            /// Combines the WS_EX_CLIENTEDGE and WS_EX_WINDOWEDGE styles.
+            /// </summary>
+            WS_EX_OVERLAPPEDWINDOW = WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE,
+            /// <summary>
+            /// Combines the WS_EX_WINDOWEDGE, WS_EX_TOOLWINDOW, and WS_EX_TOPMOST styles.
+            /// </summary>
+            WS_EX_PALETTEWINDOW = WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST,
+            /// <summary>
+            /// The window has generic "right-aligned" properties. This depends on the window class. This style has an effect only if the shell language is Hebrew, Arabic, or another language that supports reading-order alignment; otherwise, the style is ignored.
+            /// Using the WS_EX_RIGHT style for static or edit controls has the same effect as using the SS_RIGHT or ES_RIGHT style, respectively. Using this style with button controls has the same effect as using BS_RIGHT and BS_RIGHTBUTTON styles.
+            /// </summary>
+            WS_EX_RIGHT = 0x00001000,
+            /// <summary>
+            /// Vertical scroll bar (if present) is to the right of the client area. This is the default.
+            /// </summary>
+            WS_EX_RIGHTSCROLLBAR = 0x00000000,
+            /// <summary>
+            /// If the shell language is Hebrew, Arabic, or another language that supports reading-order alignment, the window text is displayed using right-to-left reading-order properties. For other languages, the style is ignored.
+            /// </summary>
+            WS_EX_RTLREADING = 0x00002000,
+            /// <summary>
+            /// Creates a window with a three-dimensional border style intended to be used for items that do not accept user input.
+            /// </summary>
+            WS_EX_STATICEDGE = 0x00020000,
+            /// <summary>
+            /// Creates a tool window; that is, a window intended to be used as a floating toolbar. A tool window has a title bar that is shorter than a normal title bar, and the window title is drawn using a smaller font. A tool window does not appear in the taskbar or in the dialog that appears when the user presses ALT+TAB. If a tool window has a system menu, its icon is not displayed on the title bar. However, you can display the system menu by right-clicking or by typing ALT+SPACE.
+            /// </summary>
+            WS_EX_TOOLWINDOW = 0x00000080,
+            /// <summary>
+            /// Specifies that a window created with this style should be placed above all non-topmost windows and should stay above them, even when the window is deactivated. To add or remove this style, use the SetWindowPos function.
+            /// </summary>
+            WS_EX_TOPMOST = 0x00000008,
+            /// <summary>
+            /// Specifies that a window created with this style should not be painted until siblings beneath the window (that were created by the same thread) have been painted. The window appears transparent because the bits of underlying sibling windows have already been painted.
+            /// To achieve transparency without these restrictions, use the SetWindowRgn function.
+            /// </summary>
+            WS_EX_TRANSPARENT = 0x00000020,
+            /// <summary>
+            /// Specifies that a window has a border with a raised edge.
+            /// </summary>
+            WS_EX_WINDOWEDGE = 0x00000100
+        }
+
         #endregion
 
         #region CeRunAppAtTime
@@ -242,62 +391,62 @@ namespace Win32
 
         #endregion
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SWP uFlags);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("coredll")]
         public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool ShowWindow(IntPtr hwnd, SW nCmdShow);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool EnableWindow(IntPtr hwnd, bool enabled);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool InvalidateRect(IntPtr hWnd, int pRect, bool bErase);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool UpdateWindow(IntPtr hwnd);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool SetWindowText(IntPtr hWnd, string lpString);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern int SendMessage(IntPtr hWnd, WM Msg, uint wParam, uint lParam);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern int SendMessage(IntPtr hWnd, WM Msg, int wParam, int lParam);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool RedrawWindow(IntPtr hWnd, IntPtr lprcUpdate, IntPtr hrgnUpdate, RDW flags);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern IntPtr GetForegroundWindow();
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern IntPtr GetActiveWindow();
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern int GetWindowTextLength(IntPtr hWnd);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
         #region User input
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool EnableHardwareKeyboard(bool bEnable);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern void mouse_event(MOUSEEVENTF dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern void keybd_event(byte bVk, byte bScan, KEYEVENTF dwFlags, uint dwExtraInfo);
 
         [Flags]
@@ -311,16 +460,16 @@ namespace Win32
         }
         #endregion
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool SetCursorPos(int X, int Y);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern IntPtr SetCursor(IntPtr hCursor);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern IntPtr SetFocus(IntPtr hWnd);
 
-        [DllImport(DllName, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern IntPtr GetDesktopWindow();
 
         [DllImport("user32.dll")]
@@ -367,7 +516,7 @@ namespace Win32
         [DllImport("coredll")]
         public static extern int RegisterHotKey(IntPtr hwnd, int id, KeyModifiers fsModifiers, VK vk);
 
-        [DllImport(DllName)]
+        [DllImport(User32Dll)]
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         [Flags]

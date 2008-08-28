@@ -11,20 +11,20 @@ namespace Win32
     public static partial class GDI32
     {
 #if PocketPC
-        private const string DllName = "coredll.dll";
+        private const string Gdi32Dll = "coredll.dll";
 #else
-        private const string DllName = "gdi32.dll";
+        private const string Gdi32Dll = "gdi32.dll";
 #endif
 
         #region StretchBlt
-        [DllImport(DllName)]
+        [DllImport(Gdi32Dll)]
         public static extern bool StretchBlt(IntPtr hdcDest, int nXOriginDest, int nYOriginDest, int nWidthDest, int nHeightDest,
              IntPtr hdcSrc, int nXOriginSrc, int nYOriginSrc, int nWidthSrc, int nHeightSrc,
              TernaryRasterOperations dwRop);
         #endregion
 
         #region BitBlt
-        [DllImport(DllName)]
+        [DllImport(Gdi32Dll)]
         public static extern int BitBlt(IntPtr hdcDest, int nXDest, int nYDest, int nWidth, int nHeight,
                 IntPtr hdcSrc, int nXSrc, int nYSrc, TernaryRasterOperations dwRop);
 
@@ -107,13 +107,13 @@ namespace Win32
 
         #endregion
 
-        [DllImport(DllName)]
+        [DllImport(Gdi32Dll)]
         public static extern IntPtr GetDC(IntPtr hWnd);
 
-        [DllImport(DllName)]
+        [DllImport(Gdi32Dll)]
         public static extern IntPtr GetWindowDC(IntPtr hWnd);
 
-        [DllImport(DllName)]
+        [DllImport(Gdi32Dll)]
         public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
 
@@ -141,5 +141,14 @@ namespace Win32
                 Bottom += y;
             }
         }
+
+        #region Color
+        public enum COLOR
+        {
+            COLOR_WINDOW = 5,
+            COLOR_WINDOWFRAME = 6,
+            COLOR_WINDOWTEXT = 8
+        }
+        #endregion
     }
 }
