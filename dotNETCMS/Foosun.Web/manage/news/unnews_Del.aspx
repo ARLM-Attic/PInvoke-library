@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="manage_news_unnews_Del" Codebehind="unnews_Del.aspx.cs" %>

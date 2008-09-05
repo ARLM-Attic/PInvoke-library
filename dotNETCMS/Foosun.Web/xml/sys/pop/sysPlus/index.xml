@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>
+        <span class="reshow">统计查看</span>
+        <br />
+      </popname>
+      <popnumber>S001</popnumber>
+      <popname>统计操作</popname>
+      <popnumber>S002</popnumber>
+      <popname>统计分类操作<br /></popname>
+      <popnumber>S003</popnumber>
+      <popname>
+        <span class="reshow">问卷调查查看</span>
+        <br />
+      </popname>
+      <popnumber>S004</popnumber>
+      <popname>问卷调查操作<br /></popname>
+      <popnumber>S005</popnumber>
+      <popname>
+        <span class="reshow">广告系统查看</span>
+        <br />
+      </popname>
+      <popnumber>S006</popnumber>
+      <popname>广告系统操作<br /></popname>
+      <popnumber>S007</popnumber>
+      <popname>
+        <span class="reshow">采集查看</span>
+        <br />
+      </popname>
+      <popnumber>S008</popnumber>
+      <popname>采集站点增加</popname>
+      <popnumber>S009</popnumber>
+      <popname>采集站点删除/修改</popname>
+      <popnumber>S010</popnumber>
+      <popname>采集新闻</popname>
+      <popnumber>S011</popnumber>
+      <popname>新闻处理</popname>
+      <popnumber>S012</popnumber>
+      <popname>采集分类处理<br /></popname>
+      <popnumber>S013</popnumber>
+      <popname>
+        <span class="reshow">友情联接查看</span>
+        <br />
+      </popname>
+      <popnumber>S014</popnumber>
+      <popname>友情联接操作</popname>
+      <popnumber>S015</popnumber>
+    </item>
+  </foosunpop>
+</rss>

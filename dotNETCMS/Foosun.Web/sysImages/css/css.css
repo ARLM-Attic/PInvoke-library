@@ -1,0 +1,41 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+td {
+	font-size: 12px;
+	color: #414141;
+	line-height: 20px;
+}
+.STYLE1 {
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+}
+.STYLE2 {
+	color: #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.STYLE3 {
+	color: #FF0000;
+	font-weight: bold;
+}
+input.username { background:#FFFFFF url("../Login/input_username.gif") 2px 2px no-repeat; padding-left:18px; }
+input.password { background:#FFFFFF url("../Login/input_password.gif") 2px 2px no-repeat; padding-left:18px; }
+input.vercode { background:#FFFFFF url("../Login/input_vercode.gif") 2px 2px no-repeat; padding-left:18px; }
+
+a:link {
+	 COLOR: #414141; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+a:visited {
+	 COLOR: #414141; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+a:active {
+	 COLOR: #ff0000;FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+a:hover {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; COLOR: #DD6800; BORDER-BOTTOM: 1px dotted; BORDER-RIGHT-WIDTH: 1px; TEXT-DECORATION: none; BACKGROUND-POSITION: 50% bottom; LEFT:1px; BACKGROUND-REPEAT: repeat-x; POSITION: relative; TOP:1px
+}

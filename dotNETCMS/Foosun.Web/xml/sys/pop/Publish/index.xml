@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>
+        <span class="reshow">发布首页</span>
+        <br />
+      </popname>
+      <popnumber>P001</popnumber>
+      <popname>发布新闻</popname>
+      <popnumber>P002</popnumber>
+      <popname>发布栏目</popname>
+      <popnumber>P003</popnumber>
+      <popname>发布专题<br /></popname>
+      <popnumber>P004</popnumber>
+      <popname>
+        <span class="reshow">计划任务查看</span>
+        <br />
+      </popname>
+      <popnumber>P005</popnumber>
+      <popname>计划任务创建</popname>
+      <popnumber>P006</popnumber>
+      <popname>计划任务修改</popname>
+      <popnumber>P007</popnumber>
+      <popname>计划任务删除<br /></popname>
+      <popnumber>P008</popnumber>
+      <popname>
+        <span class="reshow">PSF接点查看</span>
+        <br />
+      </popname>
+      <popnumber>P009</popnumber>
+      <popname>PSF接点创建</popname>
+      <popnumber>P010</popnumber>
+      <popname>PSF接点修改</popname>
+      <popnumber>P011</popnumber>
+      <popname>PSF接点删除<br /></popname>
+      <popnumber>P012</popnumber>
+      <popname>
+        <span class="reshow">发布日志查看</span>
+        <br />
+      </popname>
+      <popnumber>P013</popnumber>
+      <popname>发布日志操作</popname>
+      <popnumber>P014</popnumber>
+    </item>
+  </foosunpop>
+</rss>

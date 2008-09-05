@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>
+        <span class="reshow">模板查看</span>
+        <br />
+      </popname>
+      <popnumber>T001</popnumber>
+      <popname>导入模板</popname>
+      <popnumber>T002</popnumber>
+      <popname>目录改名</popname>
+      <popnumber>T003</popnumber>
+      <popname>目录/模板删除</popname>
+      <popnumber>T004</popnumber>
+      <popname>模板文本编辑</popname>
+      <popnumber>T005</popnumber>
+      <popname>模板可视编辑</popname>
+      <popnumber>T006</popnumber>
+      <popname>模板改名<br /></popname>
+      <popnumber>T007</popnumber>
+      <popname>
+        <span class="reshow">自由标签查看</span>
+        <br />
+      </popname>
+      <popnumber>T008</popnumber>
+      <popname>自由标签操作</popname>
+      <popnumber>T009</popnumber>
+      <popname>自定义标签查看</popname>
+      <popnumber>T010</popnumber>
+      <popname>自定义标签创建</popname>
+      <popnumber>T011</popnumber>
+      <popname>自定义标签编辑</popname>
+      <popnumber>T012</popnumber>
+      <popname>自定义标签删除到回收站</popname>
+      <popnumber>T013</popnumber>
+      <popname>自定义标签彻底删除</popname>
+      <popnumber>T014</popnumber>
+      <popname>自定义标签导入与导出</popname>
+      <popnumber>T015</popnumber>
+      <popname>自定义标签分类管理<br /></popname>
+      <popnumber>T016</popnumber>
+      <popname>
+        <span class="reshow">样式查看</span>
+        <br />
+      </popname>
+      <popnumber>T017</popnumber>
+      <popname>样式操作</popname>
+      <popnumber>T018</popnumber>
+      <popname>样式分类</popname>
+      <popnumber>T019</popnumber>
+    </item>
+  </foosunpop>
+</rss>

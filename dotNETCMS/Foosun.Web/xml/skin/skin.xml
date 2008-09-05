@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<foosunskin>
+<foosunitem>
+  <skinname>默认风格</skinname>
+  <skindir>default</skindir>
+</foosunitem>
+<foosunitem>
+  <skinname>仿网易邮箱风格</skinname>
+  <skindir>blue</skindir>
+</foosunitem>
+<foosunitem>
+  <skinname>橙色风格</skinname>
+  <skindir>red</skindir>
+</foosunitem>
+<foosunitem>
+  <skinname>湖蓝色风格</skinname>
+  <skindir>sblue</skindir>
+</foosunitem>
+<foosunitem>
+  <skinname>绿色心情</skinname>
+  <skindir>green</skindir>
+</foosunitem>
+<foosunitem>
+  <skinname>银白世界</skinname>
+  <skindir>blackwhite</skindir>
+</foosunitem>
+</foosunskin>
+</rss>

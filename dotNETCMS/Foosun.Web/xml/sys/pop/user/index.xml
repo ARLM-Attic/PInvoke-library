@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>
+        <span class="reshow">会员列表查看</span>
+        <br />
+      </popname>
+      <popnumber>U001</popnumber>
+      <popname>会员删除</popname>
+      <popnumber>U002</popnumber>
+      <popname>修改会员</popname>
+      <popnumber>U003</popnumber>
+      <popname>锁定/开放会员</popname>
+      <popnumber>U004</popnumber>
+      <popname>增加点数</popname>
+      <popnumber>U005</popnumber>
+      <popname>扣除点数</popname>
+      <popnumber>U006</popnumber>
+      <popname>增加G币</popname>
+      <popnumber>U007</popnumber>
+      <popname>扣除G币</popname>
+      <popnumber>U008</popnumber>
+      <popname>操作认证会员</popname>
+      <popnumber>U009</popnumber>
+      <popname>其他操作<br /></popname>
+      <popnumber>U010</popnumber>
+      <popname>
+        <span class="reshow">会员组查看</span>
+        <br />
+      </popname>
+      <popnumber>U011</popnumber>
+      <popname>会员组创建</popname>
+      <popnumber>U012</popnumber>
+      <popname>会员组修改</popname>
+      <popnumber>U013</popnumber>
+      <popname>会员组删除<br /></popname>
+      <popnumber>U014</popnumber>
+      <popname>
+        <span class="reshow">讨论组查看</span>
+        <br />
+      </popname>
+      <popnumber>U015</popnumber>
+      <popname>讨论组操作</popname>
+      <popnumber>U016</popnumber>
+      <popname>讨论组分类管理</popname>
+      <popnumber>U017</popnumber>
+      <popname>讨论组创建<br /></popname>
+      <popnumber>U018</popnumber>
+      <popname>
+        <span class="reshow">公告查看</span>
+        <br />
+      </popname>
+      <popnumber>U019</popnumber>
+      <popname>公告创建</popname>
+      <popnumber>U020</popnumber>
+      <popname>公告删除</popname>
+      <popnumber>U021</popnumber>
+      <popname>公告修改</popname>
+      <popnumber>U022</popnumber>
+      <popname>公告锁定/解锁<br /></popname>
+      <popnumber>U023</popnumber>
+      <popname>
+        <span class="reshow">点卡查看</span>
+        <br />
+      </popname>
+      <popnumber>U024</popnumber>
+      <popname>点卡创建(单个)</popname>
+      <popnumber>U025</popnumber>
+      <popname>点卡创建(批量)</popname>
+      <popnumber>U026</popnumber>
+      <popname>点卡操作(锁定，删除，设置为过期等)<br /></popname>
+      <popnumber>U027</popnumber>
+      <popname>
+        <span class="reshow">冲值记录查看</span>
+        <br />
+      </popname>
+      <popnumber>U028</popnumber>
+      <popname>冲值记录操作</popname>
+      <popnumber>U029</popnumber>
+      <popname>在线支付设置<br /></popname>
+      <popnumber>U030</popnumber>
+      <popname>
+        <span class="reshow">地区查看</span>
+        <br />
+      </popname>
+      <popnumber>U031</popnumber>
+      <popname>地区管操作<br /></popname>
+      <popnumber>U032</popnumber>
+      <popname>
+        <span class="reshow">短消息管理</span>
+        <br />
+      </popname>
+      <popnumber>U033</popnumber>
+      <popname>
+        <span class="reshow">评论查看</span>
+        <br />
+      </popname>
+      <popnumber>U034</popnumber>
+      <popname>评论操作</popname>
+      <popnumber>U035</popnumber>
+    </item>
+  </foosunpop>
+</rss>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>
+        <span class="reshow">参数设置查看</span>
+        <br />
+      </popname>
+      <popnumber>Q001</popnumber>
+      <popname>参数设置-基本信息</popname>
+      <popnumber>Q002</popnumber>
+      <popname>参数设置-会员参数</popname>
+      <popnumber>Q003</popnumber>
+      <popname>参数设置-上传.分组刷新</popname>
+      <popnumber>Q004</popnumber>
+      <popname>参数设置-JS.FTP</popname>
+      <popnumber>Q005</popnumber>
+      <popname>参数设置-水印缩图</popname>
+      <popnumber>Q006</popnumber>
+      <popname>参数设置-RSS.XML.WAP</popname>
+      <popnumber>Q007</popnumber>
+      <popname>参数设置-API参数<br /></popname>
+      <popnumber>Q008</popnumber>
+      <popname>
+        <span class="reshow">配置文件</span>
+        <br />
+      </popname>
+      <popnumber>Q009</popnumber>
+      <popname>
+        <span class="reshow">管理员列表查看</span>
+        <br />
+      </popname>
+      <popnumber>Q010</popnumber>
+      <popname>管理员增加</popname>
+      <popnumber>Q011</popnumber>
+      <popname>管理员修改</popname>
+      <popnumber>Q012</popnumber>
+      <popname>管理员删除</popname>
+      <popnumber>Q013</popnumber>
+      <popname>管理员锁定/解锁</popname>
+      <popnumber>Q014</popnumber>
+      <popname>管理员权限设置<br /></popname>
+      <popnumber>Q015</popnumber>
+      <popname>
+        <span class="reshow">管理员组查看</span>
+        <br />
+      </popname>
+      <popnumber>Q016</popnumber>
+      <popname>管理员组操作<br /></popname>
+      <popnumber>Q017</popnumber>
+      <popname>
+        <span class="reshow">常规管理查看</span><br />
+      </popname>
+      <popnumber>Q018</popnumber>
+      <popname>常规管理操作<br /></popname>
+      <popnumber>Q019</popnumber>
+      <popname>
+        <span class="reshow">文件管理查看</span>
+        <br />
+      </popname>
+      <popnumber>Q020</popnumber>
+      <popname>文件管理操作<br /></popname>
+      <popnumber>Q021</popnumber>
+      <popname>
+        <span class="reshow">日程安排查看</span>
+        <br />
+      </popname>
+      <popnumber>Q022</popnumber>
+      <popname>日程安排操作<br /></popname>
+      <popnumber>Q023</popnumber>
+      <popname>
+        <span class="reshow">数据库维护</span>
+        <br />
+      </popname>
+      <popnumber>Q024</popnumber>
+      <popname>
+        <span class="reshow">功能菜单查看</span>
+        <br />
+      </popname>
+      <popnumber>Q025</popnumber>
+      <popname>功能菜单操作<br /></popname>
+      <popnumber>Q026</popnumber>
+      <popname>
+        <span class="reshow">回收站查看</span>
+        <br />
+      </popname>
+      <popnumber>Q027</popnumber>
+      <popname>回收站操作<br /></popname>
+      <popnumber>Q028</popnumber>
+      <popname>
+        <span class="reshow">快捷方式</span>
+        <br />
+      </popname>
+      <popnumber>Q029</popnumber>
+      <popname>
+        <span class="reshow">API管理</span>
+          <br />
+      </popname>
+      <popnumber>Q030</popnumber>
+      <popname>
+        <span class="reshow">文件对比
+        </span>
+        <br />
+      </popname>
+      <popnumber>Q031</popnumber>
+      <popname>
+        <span class="reshow">自定义字段查看</span>
+        <br />
+      </popname>
+      <popnumber>Q032</popnumber>
+      <popname>自定义字段操作<br /></popname>
+      <popnumber>Q033</popnumber>
+      <popname>
+        <span class="reshow">自定义表单查看</span>
+        <br />
+      </popname>
+      <popnumber>Q037</popnumber>
+      <popname>自字义表单操作<br /></popname>
+      <popnumber>Q038</popnumber>      
+      <popname>
+        <span class="reshow">新闻表管理</span>
+        <br />
+      </popname>
+      <popnumber>Q034</popnumber>
+      <popname>
+        <span class="reshow">修改密码</span>
+        <br />
+      </popname>
+      <popnumber>Q035</popnumber>
+      <popname>
+        <span class="reshow">修改风格</span>
+        <br />
+      </popname>
+      <popnumber>Q036</popnumber> 
+    </item>
+  </foosunpop>
+</rss>

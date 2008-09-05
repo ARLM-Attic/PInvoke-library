@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" Inherits="manage_label_FreeLabel_Ajax" Codebehind="FreeLabel_Ajax.aspx.cs" %>

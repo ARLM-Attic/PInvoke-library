@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<foosun>
+  <item>
+    <!--是否生成百度新闻搜索协议,0为关闭，1为开启-->
+    <isbaidu>1</isbaidu>
+    <!--百度新闻搜索协议生成的条数-->
+    <number>50</number>
+    <!--条件：0最新，1推荐，2热点-->
+    <searchtype>0</searchtype>
+    <!--新闻的更新频率。单位分钟-->
+    <updatePeri>60</updatePeri>
+    <!--站点地址,不带http://,不带虚拟目录-->
+    <website>www.foosun.net</website>
+    <!--管理员信箱-->
+    <webmaster>service@foosun.cn</webmaster>
+  </item>
+</foosun>
+</rss>

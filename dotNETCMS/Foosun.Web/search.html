@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索_dotNETCMS</title>
+<script language="javascript" type="text/javascript" src="configuration/js/Prototype.js"></script>
+<style type="text/css">
+/* CSS Document */
+body {
+	margin:10;
+	padding:0;
+	background: #FFF;
+	font-size:12px;
+	color:#000;
+	margin-left: 0px;
+	margin-top: 0px;
+	background-color: #F7F7F7;
+	line-height:20px;
+}
+.class1
+{
+	font-size:14px;
+	color:#FF0000;
+}
+.classnoe
+{
+	font-size:14px;
+}
+</style>
+</head>
+<body onload="getUrlParam();">
+<table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#EEEEEE">
+  <form id="form1">
+  <tr>
+	<td width="22%" rowspan="2"><a href="http://www.foosun.net" target="_blank"><img src="sysImages/normal/logo.jpg" alt="powered by Foosun Inc." width="207" border="0" /></a></td>
+	<td valign="bottom" style="width:40%;height:26px;"><span id="snews" class="class1" onclick="getType('news')" style="cursor:pointer;font-size:14px;">全文</span>　<span  class="classnoe" onclick="getType('tag')" id="stag" style="cursor:pointer;font-size:14px;">TAG</span>　<span  class="classnoe" onclick="getType('author')" id="sauthor" style="cursor:pointer;font-size:14px;">作者</span>　<span  class="classnoe" onclick="getType('edit')" id="sedit" style="cursor:pointer;font-size:14px;">编辑</span></td>
+	<td width="38%" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+	<td>
+	<input id="type" name="type" type="hidden" value="news" />
+	<input id="chid" name="chid" type="hidden" value="" />
+	<input name="tags" style="font-family:Arial;font-size:12px;" type="text" id="tags" size="30" onkeydown="javascript:if(event.keyCode==13){return false;}" />
+	<input type="button" name="Submit1" style="font-family:Arial;font-size:12px;" value="继续搜索"  onclick="javascript:SearchGo(this.form);" /></td>
+  </tr>
+  </form>
+</table>
+<div style="padding-left:15px;padding-top:15px;">
+<span id="Span_SearchList"><img alt="搜索中..." src="sysImages/folder/loading.gif" style="border:0px;" />正在搜索...</span>
+ 
+<script language="javascript" type="text/javascript">
+function getUrlParam()
+{
+    var str=window.location.href; 
+    String.prototype.getQuery = function(name) 
+    { 
+　　    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); 
+　　    var r = this.substr(this.indexOf("\?")+1).match(reg); 
+　　    if (r!=null) return unescape(r[2]); return null; 
+    } 
+    var getid = str.getQuery("type"); 
+    var getids =  getid;
+    var getchid = str.getQuery("ChID");
+    if(getid==null)
+    {
+         getids="news";
+    }
+	document.getElementById("type").value=getids;
+	document.getElementById("chid").value=getchid;
+	document.getElementById("tags").value=unescape(str.getQuery("tags"));
+	var ctype= getids;
+    getType(ctype);
+}
+var request=window.location.search;
+var Action = request.substring(1,request.length);
+
+function getType(typ)
+{
+	if(typ=="news")
+	{
+		document.getElementById("type").value="news";
+		document.getElementById("snews").className="class1";
+		document.getElementById("stag").className="classnoe";
+		document.getElementById("sedit").className="classnoe";
+		document.getElementById("sauthor").className="classnoe";
+	}
+	else if(typ=="tag")
+	{
+		document.getElementById("type").value="tag";
+		document.getElementById("stag").className="class1";
+		document.getElementById("snews").className="classnoe";
+		document.getElementById("sedit").className="classnoe";
+		document.getElementById("sauthor").className="classnoe";
+	}
+	else if(typ=="edit")
+	{
+		document.getElementById("type").value="edit";
+		document.getElementById("sedit").className="class1";
+		document.getElementById("snews").className="classnoe";
+		document.getElementById("sauthor").className="classnoe";
+		document.getElementById("stag").className="classnoe";
+	}
+	else if(typ=="author")
+	{
+		document.getElementById("type").value="author";
+		document.getElementById("sauthor").className="class1";
+		document.getElementById("snews").className="classnoe";
+		document.getElementById("sedit").className="classnoe";
+		document.getElementById("stag").className="classnoe";
+	}
+}
+
+function SearchGo(obj)
+{
+	if(document.getElementById("tags").value=="")
+	{
+	    alert("填写关键字\n by dotNETCMS v1.0 RC2");
+	    document.getElementById("tags").focus();
+	    return false;
+	}
+	if(obj.chid.value==""||isNaN(obj.chid.value))
+	{
+	    window.location.href='Search.html?type='+document.getElementById("type").value +'&tags='+escape(obj.tags.value);
+	}
+	else
+	{
+	    window.location.href='Search.html?type='+document.getElementById("type").value +'&ChID='+escape(obj.chid.value)+'&tags='+escape(obj.tags.value);
+	}
+}
+
+function GetSearchList(page)
+{
+   if(Action.indexOf('&page=')>-1)
+       Action = Action.replace(/\&page=\d+/,'&page='+ page);
+   else
+   {
+       Action+='&page='+page;
+   }
+   var options={ 
+                  method:'get', 
+                  parameters:Action, 
+                  onComplete:function(transport) 
+                  { 
+                      var returnvalue=transport.responseText; 
+                      if (returnvalue.indexOf("??")>-1) 
+                          document.getElementById("Span_SearchList").innerHTML='搜索失败'; 
+                      else 
+                          document.getElementById("Span_SearchList").innerHTML=returnvalue; 
+                  } 
+               }; 
+   new  Ajax.Request('Search.aspx?no-cache='+Math.random(),options);
+}
+GetSearchList(1);
+
+function sendfriend(url,title) {   
+   var clipBoardContent=''; 
+   clipBoardContent+=title;
+   clipBoardContent+='\r\n'+url+'\r\n\r\n这篇文章不错，您有空去看看吧(不是病毒哦)';
+    if(window.clipboardData)   
+    {   
+        window.clipboardData.clearData();   
+        window.clipboardData.setData("Text", clipBoardContent);  
+    }   
+    else if(navigator.userAgent.indexOf("Opera") != -1)   
+    {   
+        window.location = clipBoardContent;   
+    }   
+    else if (window.netscape)   
+    {   
+        try {   
+            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");   
+        }   
+        catch (e)   
+        {   
+            alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将[signed.applets.codebase_principal_support]设置为'true'");   
+        }   
+        var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);   
+        if (!clip)   
+            return;   
+        var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);   
+        if (!trans)   
+            return;   
+        trans.addDataFlavor('text/unicode');   
+        var str = new Object();   
+        var len = new Object();   
+        var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);   
+        var copytext = clipBoardContent;   
+        str.data = copytext;   
+        trans.setTransferData("text/unicode",str,copytext.length*2);   
+        var clipid = Components.interfaces.nsIClipboard;   
+        if (!clip)   
+            return false;   
+        clip.setData(trans,null,clipid.kGlobalClipboard);   
+    }   
+      alert("你已复制链接及标题，请粘贴到QQ/MSN等发给好友!"); 
+} 
+</script>
+</div>
+<div style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:10px;height:50px;text-align:center;">
+Powered by dotNETCMS v1.0 for Foosun Inc. website:www.foosun.net
+</div>
+</body>
+</html>

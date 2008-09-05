@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<foosunstyle>
+  <foosunitem>
+    <stylename>选择栏目样式</stylename>
+    <stylevalue></stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>中文名称</stylename>
+    <stylevalue>{#class_Name}</stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>英文名称</stylename>
+    <stylevalue>{#class_EName}</stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>访问路径</stylename>
+    <stylevalue>{#class_Path}</stylevalue>
+  </foosunitem>
+
+  <foosunitem>
+    <stylename>栏目信息:导读</stylename>
+    <stylevalue>{#class_Navi}</stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>栏目信息:导读图片地址</stylename>
+    <stylevalue>{#class_NaviPic}</stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>栏目信息:meta关键字</stylename>
+    <stylevalue>{#class_Keywords}</stylevalue>
+  </foosunitem>
+  <foosunitem>
+    <stylename>栏目信息:meta描述</stylename>
+    <stylevalue>{#class_Descript}</stylevalue>
+  </foosunitem>
+
+</foosunstyle>
+</rss>

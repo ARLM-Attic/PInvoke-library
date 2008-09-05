@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script language="javascript" type="text/javascript" src="configuration/js/Prototype.js"></script>
+<style type="text/css">
+/* CSS Document */
+body {
+	margin:10;
+	padding:0;
+	background: #FFF;
+	font-size:12px;
+	color:#000;
+	margin-left: 0px;
+	margin-top: 0px;
+	background-color: #F7F7F7;
+	line-height:20px;
+}
+.class1
+{
+	font-size:14px;
+	color:#FF0000;
+}
+.classnoe
+{
+	font-size:14px;
+}
+</style>
+</head>
+<body>
+<form action="" method="post" id="form1" runat="server">
+<div style="background-color:#EEEEEE;"><a href="http://www.foosun.net" target="_blank"><img src="sysImages/normal/logo.jpg" alt="powered by Foosun Inc." width="207" border="0" /></a></div>
+<div style="padding-left:15px;padding-top:50px;padding-bottom:50px;">
+  <table width="100%" border="0" cellpadding="2" cellspacing="1" bgcolor="#EEEEEE">
+    <tr>
+      <td><b>视频播放</b></td>
+    </tr>
+    <tr>
+      <td align="center"><span id="PlayVideo"><img alt="正在加载..." src="sysImages/folder/loading.gif" style="border:0px;" />正在加载...</span></td>
+    </tr>
+  </table>
+</div>
+</form>
+<div style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:10px;height:50px;text-align:center;"> Powered by dotNETCMS v1.0 for Foosun Inc. website:www.foosun.net </div>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+var request=window.location.search;
+var Action = request.substring(1,request.length);
+function GetVideo()
+{
+   var options={ 
+                  method:'get', 
+                  parameters:Action, 
+                  onComplete:function(transport) 
+                  { 
+                      var returnvalue=transport.responseText; 
+                      if (returnvalue.indexOf("??")>-1) 
+                          document.getElementById("PlayVideo").innerHTML='加载失败!'; 
+                      else 
+                          document.getElementById("PlayVideo").innerHTML=returnvalue; 
+                  } 
+               }; 
+   new  Ajax.Request('Vplay.aspx?no-cache='+Math.random(),options);
+}
+GetVideo();
+</script>

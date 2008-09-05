@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname>API管理</popname>
+      <popnumber>A001</popnumber>
+      <popname>API扩展</popname>
+      <popnumber>A002</popnumber>
+    </item>
+  </foosunpop>
+</rss>

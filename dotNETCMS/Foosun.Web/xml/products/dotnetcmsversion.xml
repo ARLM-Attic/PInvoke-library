@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<foosunversion>
+  <foosunitem>
+    <versionname>dotNETCMSversion</versionname>
+    <versioncontent>
+      <table class="list_link">
+        <tr>
+          <td align="right">中文名：</td>
+          <td>风讯网站内容管理系统 For .NET</td>
+        </tr>
+        <tr>
+          <td align="right">英文名：</td>
+          <td>FoosunCMS For .NET；dotNETCMS；NewsCMS</td>
+        </tr>
+        <tr>
+          <td align="right">开发商：</td>
+          <td>四川风讯科技发展有限公司(Foosun INC.)</td>
+        </tr>
+        <tr>
+          <td align="right">官方站：</td>
+          <td>www.foosun.net</td>
+        </tr>
+        <tr>
+          <td align="right">技术站：</td>
+          <td>bbs.foosun.net</td>
+        </tr>
+        <tr>
+          <td align="right">地　址：</td>
+          <td>四川·成都市武侯区惠民街109号2层</td>
+        </tr>
+        <tr>
+          <td align="right">电　话：</td>
+          <td>86-28-85098980</td>
+        </tr>
+        <tr>
+          <td align="right">传　真：</td>
+          <td>86-28-66026180</td>
+        </tr>
+        <tr>
+          <td align="right">Ｑ　Ｑ：</td>
+          <td>655071</td>
+        </tr>
+        <tr>
+          <td align="right">ＭＳＮ：</td>
+          <td>ikoolls@gmail.com</td>
+        </tr>
+      </table>
+    </versioncontent>
+  </foosunitem>
+</foosunversion>
+</rss>

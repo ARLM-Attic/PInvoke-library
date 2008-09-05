@@ -1,0 +1,42 @@
+/* 页面整体样式 */
+BODY {
+	FONT-SIZE: 9pt; 
+	background:#FFFFFF;
+	background-position:center;
+	text-decoration: none;
+	SCROLLBAR-FACE-COLOR: #f6f6f6;
+	SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; 
+	SCROLLBAR-SHADOW-COLOR: #cccccc; 
+	SCROLLBAR-3DLIGHT-COLOR: #cccccc; 
+	SCROLLBAR-ARROW-COLOR: #330000; 
+	SCROLLBAR-TRACK-COLOR: #f6f6f6; 
+	SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+	color:#2E4690;
+	margin-top:10px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-bottom:10px;
+	padding:0px;
+}
+p {
+	margin-top:3px;
+	margin-bottom:3px;
+}
+h1 {
+	height:12px;
+	line-height:12px;
+	margin-top:8px;
+	margin-bottom:8px;
+	padding:0px;
+	font-size:12px;
+	font-weight:normal;
+}	
+div {word-break:break-all;}
+
+#topshowtopshow
+{
+	margin:0px;
+	padding:0px;
+	width:100%;
+	height:113px;
+}

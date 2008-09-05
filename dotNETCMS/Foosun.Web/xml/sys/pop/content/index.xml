@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <foosunpop>
+    <item>
+      <popname><span class="reshow">新闻列表查看</span><br /></popname>
+      <popnumber>C000</popnumber>
+      <popname>添加新闻</popname>
+      <popnumber>C001</popnumber>
+      <popname>修改新闻</popname>
+      <popnumber>C002</popnumber>
+      <popname>删除新闻</popname>
+      <popnumber>C003</popnumber>
+      <popname>一级审核</popname>
+      <popnumber>C004</popnumber>
+      <popname>二级审核</popname>
+      <popnumber>C005</popnumber>
+      <popname>三级审核</popname>
+      <popnumber>C006</popnumber>
+      <popname>重置权重</popname>
+      <popnumber>C007</popnumber>
+      <popname>锁定/解锁</popname>
+      <popnumber>C008</popnumber>
+      <popname>移动</popname>
+      <popnumber>C009</popnumber>
+      <popname>复制</popname>
+      <popnumber>C010</popnumber>
+      <popname>置顶</popname>
+      <popnumber>C011</popnumber>
+      <popname>归档</popname>
+      <popnumber>C012</popnumber>
+      <popname>加入JS</popname>
+      <popnumber>C013</popnumber>
+      <popname>清空数据</popname>
+      <popnumber>C014</popnumber>
+      <popname>设置属性</popname>
+      <popnumber>C015</popnumber>
+      <popname>生成静态文件</popname>
+      <popnumber>C016</popnumber>
+      <popname>生成XML文件</popname>
+      <popnumber>C017</popnumber>
+      <popname>生成索引文件<br /></popname>
+      <popnumber>C018</popnumber>
+      <popname>
+        <span class="reshow">栏目列表查看</span>
+        <br />
+      </popname>
+      <popnumber>C019</popnumber>
+      <popname>刷新栏目</popname>
+      <popnumber>C020</popnumber>
+      <popname>创建栏目</popname>
+      <popnumber>C021</popnumber>
+      <popname>修改栏目</popname>
+      <popnumber>C022</popnumber>
+      <popname>栏目复位</popname>
+      <popnumber>C024</popnumber>
+      <popname>栏目合并</popname>
+      <popnumber>C025</popnumber>
+      <popname>栏目转移</popname>
+      <popnumber>C026</popnumber>
+      <popname>栏目初始化</popname>
+      <popnumber>C027</popnumber>
+      <popname>栏目属性</popname>
+      <popnumber>C028</popnumber>
+      <popname>栏目锁定/解锁</popname>
+      <popnumber>C029</popnumber>
+      <popname>栏目删除</popname>
+      <popnumber>CE01</popnumber>
+      <popname>栏目彻底删除</popname>
+      <popnumber>C030</popnumber>
+      <popname>栏目生成xml</popname>
+      <popnumber>C031</popnumber>
+      <popname>栏目生成静态文件</popname>
+      <popnumber>C032</popnumber>
+      <popname>栏目数据清空<br /></popname>
+      <popnumber>C033</popnumber>
+      <popname>
+        <span class="reshow">频道查看</span>
+        <br />
+      </popname>
+      <popnumber>C034</popnumber>
+      <popname>创建频道</popname>
+      <popnumber>C035</popnumber>
+      <popname>修改频道</popname>
+      <popnumber>C036</popnumber>
+      <popname>删除频道<br /></popname>
+      <popnumber>C037</popnumber>
+      <popname>
+        <span class="reshow">专题查看</span>
+        <br />
+      </popname>
+      <popnumber>C038</popnumber>
+      <popname>创建专题</popname>
+      <popnumber>C0</popnumber>
+      <popname>修改专题</popname>
+      <popnumber>C039</popnumber>
+      <popname>删除专题</popname>
+      <popnumber>C040</popnumber>
+      <popname>彻底删除专题</popname>
+      <popnumber>C0401</popnumber>
+      <popname>专题锁定/解锁<br /></popname>
+      <popnumber>C041</popnumber>
+      <popname>
+        <span class="reshow">稿件查看</span>
+        <br />
+      </popname>
+      <popnumber>C042</popnumber>
+      <popname>稿件审核</popname>
+      <popnumber>C043</popnumber>
+      <popname>稿件退稿</popname>
+      <popnumber>C044</popnumber>
+      <popname>稿件统计</popname>
+      <popnumber>C045</popnumber>
+      <popname>稿酬支付历史</popname>
+      <popnumber>C046</popnumber>
+      <popname>稿酬等级设定<br /></popname>
+      <popnumber>C047</popnumber>
+      <popname>
+        <span class="reshow">归档查看</span>
+        <br />
+      </popname>
+      <popnumber>C048</popnumber>
+      <popname>归档操作<br /></popname>
+      <popnumber>C049</popnumber>
+      <popname>
+        <span class="reshow">不规则新闻查看</span>
+        <br />
+      </popname>
+      <popnumber>CE02</popnumber>
+      <popname>不规则新闻操作<br /></popname>
+      <popnumber>C050</popnumber>
+      <popname>
+        <span class="reshow">JS查看</span>
+        <br />
+      </popname>
+      <popnumber>C051</popnumber>
+      <popname>JS创建</popname>
+      <popnumber>C052</popnumber>
+      <popname>JS修改</popname>
+      <popnumber>C053</popnumber>
+      <popname>JS删除<br /></popname>
+      <popnumber>C054</popnumber>
+      <popname>
+        <span class="reshow">JS模型查看</span>
+        <br />
+      </popname>
+      <popnumber>C055</popnumber>
+      <popname>JS模型操作</popname>
+      <popnumber>C056</popnumber>
+    </item>
+  </foosunpop>
+</rss>
