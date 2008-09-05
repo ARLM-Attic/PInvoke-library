@@ -1,0 +1,119 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63D5B865-C045-4FBC-86AC-18E082006408}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foosun.DALFactory</RootNamespace>
+    <AssemblyName>Foosun.DALFactory</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="IAdmin.cs" />
+    <Compile Include="IAdminGroup.cs" />
+    <Compile Include="IAds.cs" />
+    <Compile Include="IArealist.cs" />
+    <Compile Include="IChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICollect.cs" />
+    <Compile Include="IConstr.cs" />
+    <Compile Include="IContentManage.cs" />
+    <Compile Include="ICustomForm.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="IDefineTable.cs" />
+    <Compile Include="IDiscuss.cs" />
+    <Compile Include="IDynamicTrans.cs" />
+    <Compile Include="IFreeLabel.cs" />
+    <Compile Include="IFriend.cs" />
+    <Compile Include="IFrindLink.cs" />
+    <Compile Include="IFsLog.cs" />
+    <Compile Include="IHelp.cs" />
+    <Compile Include="IInfo.cs" />
+    <Compile Include="IInstall.cs" />
+    <Compile Include="IJSTemplet.cs" />
+    <Compile Include="ILabel.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="IMycom.cs" />
+    <Compile Include="INews.cs" />
+    <Compile Include="INewsJS.cs" />
+    <Compile Include="IPagination.cs" />
+    <Compile Include="IPhoto.cs" />
+    <Compile Include="IPsframe.cs" />
+    <Compile Include="IPublish.cs" />
+    <Compile Include="IRecyle.cs" />
+    <Compile Include="IrootPublic.cs" />
+    <Compile Include="IRss.cs" />
+    <Compile Include="ISearch.cs" />
+    <Compile Include="ISite.cs" />
+    <Compile Include="ISpecial.cs" />
+    <Compile Include="IStat.cs" />
+    <Compile Include="IStyle.cs" />
+    <Compile Include="ISurvey.cs" />
+    <Compile Include="Isys.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IUserAdapt.cs" />
+    <Compile Include="IUserList.cs" />
+    <Compile Include="IUserLogin.cs" />
+    <Compile Include="IUserMisc.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foosun.Config\Foosun.Config.csproj">
+      <Project>{1327A138-9082-4480-B612-94A1FB4521FE}</Project>
+      <Name>Foosun.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Model\Foosun.Model.csproj">
+      <Project>{5A4717F3-8A33-46E4-B14A-EF382425C64D}</Project>
+      <Name>Foosun.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
