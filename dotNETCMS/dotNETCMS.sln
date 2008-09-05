@@ -34,6 +34,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foosun.AccessDAL", "Foosun.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foosun.CMS", "Foosun.CMS\Foosun.CMS.csproj", "{EC6D37DD-CEF4-4E7E-A4E2-E90829A1B3F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE9DD8C1-0D9E-4731-BDDD-2235FB2DA436}"
+	ProjectSection(SolutionItems) = preProject
+		doc\editlog.txt = doc\editlog.txt
+		doc\install_config.txt = doc\install_config.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 16

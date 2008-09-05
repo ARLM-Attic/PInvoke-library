@@ -3817,9 +3817,6 @@
     <Content Include="bin\Foosun.Web.UI.pdb" />
     <Content Include="configuration\config\api.config" />
     <Content Include="configuration\system\getManageForder.aspx" />
-    <Content Include="database\dotnetcms.mdb">
-    </Content>
-    <Content Include="database\dotNETCMSbase.config" />
     <None Include="editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
@@ -3834,10 +3831,6 @@
     <None Include="Install\SQL\Value\navi.sql" />
     <None Include="Install\SQL\Value\site_param.sql" />
     <None Include="Install\SQL\Value\stat.sql" />
-    <Content Include="database\fs_collect.mdb">
-    </Content>
-    <Content Include="database\fs_help.mdb">
-    </Content>
     <Content Include="manage\publish\AjaxSiteParam.aspx" />
     <Content Include="manage\Sys\File_GetIn.aspx" />
     <Content Include="manage\top.aspx" />
@@ -3927,8 +3920,6 @@
     <Content Include="Templets\img\xian.jpg" />
     <Content Include="Templets\index.html" />
     <Content Include="Web.config" />
-    <Content Include="database\AddressIp.mdb">
-    </Content>
     <Content Include="Install\css\styles.css" />
     <Content Include="Install\finishinstall.aspx" />
     <Content Include="Install\image\01.jpg" />
