@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<about>
+     <template name="默认风格"
+          author="Discuz!NT"
+          createdate = "2008-5-27"
+          ver="2.5"
+          fordntver="2.5"
+          copyright="Copyright 2008 Comsenz Inc." />
+</about>
