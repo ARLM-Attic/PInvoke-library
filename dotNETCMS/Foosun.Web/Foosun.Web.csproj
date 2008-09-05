@@ -3787,34 +3787,6 @@
     <Content Include="api\dz\ADAPT.config" />
     <Content Include="api\api.aspx" />
     <Content Include="baidu.xml" />
-    <Content Include="bin\Foosun.AccessDAL.dll" />
-    <Content Include="bin\Foosun.AccessDAL.pdb" />
-    <Content Include="bin\Foosun.CMS.dll" />
-    <Content Include="bin\Foosun.CMS.pdb" />
-    <Content Include="bin\Foosun.Common.dll" />
-    <Content Include="bin\Foosun.Common.pdb" />
-    <Content Include="bin\Foosun.Config.dll" />
-    <Content Include="bin\Foosun.Config.pdb" />
-    <Content Include="bin\Foosun.Control.dll" />
-    <Content Include="bin\Foosun.Control.pdb" />
-    <Content Include="bin\Foosun.DALFactory.dll" />
-    <Content Include="bin\Foosun.DALFactory.pdb" />
-    <Content Include="bin\Foosun.DALProfile.dll" />
-    <Content Include="bin\Foosun.DALProfile.pdb" />
-    <Content Include="bin\Foosun.Global.dll" />
-    <Content Include="bin\Foosun.Global.pdb" />
-    <Content Include="bin\Foosun.Install.dll" />
-    <Content Include="bin\Foosun.Install.pdb" />
-    <Content Include="bin\Foosun.Model.dll" />
-    <Content Include="bin\Foosun.Model.pdb" />
-    <Content Include="bin\Foosun.PlugIn.dll" />
-    <Content Include="bin\Foosun.PlugIn.pdb" />
-    <Content Include="bin\Foosun.Publish.dll" />
-    <Content Include="bin\Foosun.Publish.pdb" />
-    <Content Include="bin\Foosun.SQLServerDAL.dll" />
-    <Content Include="bin\Foosun.SQLServerDAL.pdb" />
-    <Content Include="bin\Foosun.Web.UI.dll" />
-    <Content Include="bin\Foosun.Web.UI.pdb" />
     <Content Include="configuration\config\api.config" />
     <Content Include="configuration\system\getManageForder.aspx" />
     <None Include="editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
@@ -4517,6 +4489,7 @@
     <Content Include="xml\sys\sysLabel.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
     <Folder Include="database\backup\" />
     <Folder Include="editor\editor\filemanager\browser\default\connectors\" />
     <Folder Include="editor\editor\plugins\" />
