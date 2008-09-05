@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6612F705-1EAE-401B-A530-75EFFF5A93D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foosun.Publish</RootNamespace>
+    <AssemblyName>Foosun.Publish</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonData.cs" />
+    <Compile Include="General.cs" />
+    <Compile Include="Label\ChannelLabel.cs" />
+    <Compile Include="Label\CustomLabel.cs" />
+    <Compile Include="Label\DynamicLabel.cs" />
+    <Compile Include="Label\FreeLabel.cs" />
+    <Compile Include="Label\Label.cs" />
+    <Compile Include="Label\LabelMass.cs" />
+    <Compile Include="Label\LabelMass_Method1.cs" />
+    <Compile Include="Label\LabelMass_Method2.cs" />
+    <Compile Include="Label\LabelMass_Method3.cs" />
+    <Compile Include="Label\LabelMass_Method4.cs" />
+    <Compile Include="Label\LabelMass_Method5.cs" />
+    <Compile Include="Label\LabelStyle.cs" />
+    <Compile Include="Label\NewsParameter.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="UltiPublish.cs" />
+    <Compile Include="UtiPublishChannel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foosun.Common\Foosun.Common.csproj">
+      <Project>{F7309C46-B015-425B-B929-338F90A5B682}</Project>
+      <Name>Foosun.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Config\Foosun.Config.csproj">
+      <Project>{1327A138-9082-4480-B612-94A1FB4521FE}</Project>
+      <Name>Foosun.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Control\Foosun.Control.csproj">
+      <Project>{AFE6BB30-E0BD-4744-B0F4-23BC8EFCBFD8}</Project>
+      <Name>Foosun.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.DALFactory\Foosun.DALFactory.csproj">
+      <Project>{63D5B865-C045-4FBC-86AC-18E082006408}</Project>
+      <Name>Foosun.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.DALProfile\Foosun.DALProfile.csproj">
+      <Project>{A5B7599F-F0F5-44BF-8C8F-2E964B04C6BD}</Project>
+      <Name>Foosun.DALProfile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Global\Foosun.Global.csproj">
+      <Project>{A48884A0-3E9C-466C-BB5C-39E68AA884A9}</Project>
+      <Name>Foosun.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Model\Foosun.Model.csproj">
+      <Project>{5A4717F3-8A33-46E4-B14A-EF382425C64D}</Project>
+      <Name>Foosun.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
