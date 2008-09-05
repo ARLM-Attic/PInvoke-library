@@ -3787,6 +3787,11 @@
     <Content Include="api\dz\ADAPT.config" />
     <Content Include="api\api.aspx" />
     <Content Include="baidu.xml" />
+    <Content Include="bin\Ajax.dll" />
+    <Content Include="bin\CBMD5.dll" />
+    <Content Include="bin\Intelligencia.UrlRewriter.dll" />
+    <Content Include="bin\Interop.ADODB.dll" />
+    <Content Include="bin\Interop.JRO.dll" />
     <Content Include="configuration\config\api.config" />
     <Content Include="configuration\system\getManageForder.aspx" />
     <None Include="editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
@@ -4489,7 +4494,6 @@
     <Content Include="xml\sys\sysLabel.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
     <Folder Include="database\backup\" />
     <Folder Include="editor\editor\filemanager\browser\default\connectors\" />
     <Folder Include="editor\editor\plugins\" />
