@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discuz.Data.Access", "Discu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discuz.Data.MySql", "Discuz.Data.MySQL\Discuz.Data.MySql.csproj", "{472F4446-B386-4FE5-AD50-1EC1AE6E9645}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1E79CEB2-91D3-42C6-AF9F-6C7220B4E3C1}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 26
