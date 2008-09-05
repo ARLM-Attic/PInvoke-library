@@ -1,0 +1,108 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F6A5F6C1-BD11-441D-B956-3BF52AEED890}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Discuz.Config</RootNamespace>
+    <AssemblyName>Discuz.Config</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>4096</FileAlignment>
+    <BaseAddress>4194304</BaseAddress>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Discuz.Web\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AggregationConfig.cs" />
+    <Compile Include="AggregationConfigFileManager.cs" />
+    <Compile Include="AggregationConfigInfo.cs" />
+    <Compile Include="APIConfigFileManager.cs" />
+    <Compile Include="APIConfigInfo.cs" />
+    <Compile Include="APIConfigs.cs" />
+    <Compile Include="ApplicationInfo.cs" />
+    <Compile Include="ApplicationInfoCollection.cs" />
+    <Compile Include="BaseConfigFileManager.cs" />
+    <Compile Include="BaseConfigInfo.cs" />
+    <Compile Include="BaseConfigInfoCollection.cs" />
+    <Compile Include="BaseConfigs.cs" />
+    <Compile Include="FTPConfigFileManager .cs" />
+    <Compile Include="FTPConfigInfo.cs" />
+    <Compile Include="FTPConfigInfoCollection.cs" />
+    <Compile Include="FTPConfigs.cs" />
+    <Compile Include="MyAttachmentsTypeConfigFileManager.cs" />
+    <Compile Include="MyAttachmentsTypeConfigInfo.cs" />
+    <Compile Include="MyAttachmentsTypeConfigs.cs" />
+    <Compile Include="ScheduleConfigFileManager.cs" />
+    <Compile Include="ScheduleConfigs.cs" />
+    <Compile Include="EmailConfigFileManager.cs" />
+    <Compile Include="EmailConfigInfo.cs" />
+    <Compile Include="EmailConfigs.cs" />
+    <Compile Include="GeneralConfigFileManager.cs" />
+    <Compile Include="GeneralConfigInfo.cs" />
+    <Compile Include="GeneralConfigs.cs" />
+    <Compile Include="DefaultConfigFileManager.cs" />
+    <Compile Include="IConfigFileManager.cs" />
+    <Compile Include="IConfigInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\BaseConfigProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScheduleConfigInfo.cs" />
+    <Compile Include="ScriptEventConfigFileManager.cs" />
+    <Compile Include="ScriptEventConfigInfo.cs" />
+    <Compile Include="ScriptEventConfigs.cs" />
+    <Compile Include="SpaceActiveConfigFileManager.cs" />
+    <Compile Include="SpaceActiveConfigInfo.cs" />
+    <Compile Include="SpaceActiveConfigs.cs" />
+    <Compile Include="TradeConfigFileManager.cs" />
+    <Compile Include="TradeConfigInfo.cs" />
+    <Compile Include="TradeConfigs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Discuz.Common\Discuz.Common.csproj">
+      <Project>{6A0EC5BD-742F-431D-A9EC-5C0342B2A76A}</Project>
+      <Name>Discuz.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

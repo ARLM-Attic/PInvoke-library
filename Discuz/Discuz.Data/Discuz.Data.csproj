@@ -1,0 +1,72 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAA860C2-28D3-4D1B-8D7B-3A83C94DAA65}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Discuz.Data</RootNamespace>
+    <AssemblyName>Discuz.Data</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="DbException.cs" />
+    <Compile Include="DbProvider\DatabaseProvider.cs" />
+    <Compile Include="DbProvider\IDataProvider.cs" />
+    <Compile Include="DbProvider\IDbProvider.cs" />
+    <Compile Include="DbProvider\IDbProviderFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Discuz.Common\Discuz.Common.csproj">
+      <Project>{6A0EC5BD-742F-431D-A9EC-5C0342B2A76A}</Project>
+      <Name>Discuz.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discuz.Config\Discuz.Config.csproj">
+      <Project>{F6A5F6C1-BD11-441D-B956-3BF52AEED890}</Project>
+      <Name>Discuz.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discuz.Entity\Discuz.Entity.csproj">
+      <Project>{41156C65-96B0-4026-A4FF-94CC299ABCAB}</Project>
+      <Name>Discuz.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
