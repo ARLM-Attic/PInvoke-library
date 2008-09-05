@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>dotNETCMS</title>
+<style type="text/css">
+<!--
+*{margin:0;padding:0;font-family:Arial,"宋体";}
+body {background: #FFF;color:#000; font-size:12px; text-align:center;}
+ul,li{list-style:none;}
+ul,p,ol{line-height:20px;}
+select,input{vertical-align:middle;}
+img{border:0;}
+
+.f14 {font-size:14px;}
+.lh20 {line-height:20px;}
+.b1{border:1px #fcc solid;}
+
+a{text-decoration: underline;color: #009}
+a:visited{color:#848484;}
+a:hover{color: #f00;}
+
+/* 日历 */
+		td,p,li,input,select,div,span {font-size:12px;}
+		table,td,img,div,span,form{border: none;margin: 0 0 0 0;padding: 0 0 0 0;}
+		.ftd02{color:#686868;width:17px;font-size:12px;text-align:center;padding-top:2px; height:22px;}
+		.ctd01{padding-top:2px;font-family:Arial; font-size:10px;background:#efefef;text-align:center;color:#686868; height:15px;}
+		.ctd01 a:link,.ctd01 a:visited {text-decoration: none;color:#686868;}
+		.ctd01 a:active,.ctd01 a:hover {text-decoration: underline;color:#f00;}
+		.ctd02{padding-top:2px;font-family:Arial; font-size:10px;background-color:#666;color:#fff;text-align:center; height:15px;}
+		.ctd02 a:link,.ctd02 a:visited {text-decoration: none;color:#fff;}
+		.ctd02 a:active,.ctd02 a:hover {text-decoration: underline;color:#ff0;}
+-->
+</style>
+</head>
+<script type="text/javascript" language="javascript">
+
+	var RequeryStr = window.location.href;
+
+	var paramArray;//一个查询字符串键值对数组.startDate=2004-01-01以"="来切
+	var RequeryStrArray;//window.location.href中的查询字符串数组.startDate=2004-01-01&url=xxx以"&"来切
+	var key = "";
+	var value = "";
+	var url = "";//点击日期时链接的地址
+	var defaultUrl ="";//默认点击日期时链接的地址
+	var startDate = "";//开始日期,查询字符串中 startDate=2004-01-01
+	var startDay="";//开始日
+	var startMonth="";//开始月
+	var startYear="";//开始年
+	var endDate = "";
+	var endDay="";//结束日
+	var endMonth="";//结束月
+	var endYear="";//结束年
+	var tipWord="";
+	/*把查询字符串拆成数组*/
+
+	var RequeryStrArray = RequeryStr.split("?")[1].split("&");
+
+	for(var i = 0 ; i < RequeryStrArray.length ; i ++)
+	{
+		paramArray = RequeryStrArray[i].split("=");
+		key = paramArray[0];
+		value = paramArray[1];
+
+		if(key == "url" || key == "defaultUrl")
+		{
+			value = value.replace(/\*\*\*/g,"?");
+			value = value.replace(/\*\*/g,"&");
+			value = value.replace(/\*/g,"=");
+		}
+
+		if(key == "startDate")
+		{
+			startDate = value;
+			startYear = parseInt(value.split("-")[0]);
+			startMonth = value.split("-")[1];
+			startMonth = startMonth.replace(/^0/,"");//05 ---> 5
+			startDay = parseInt(value.split("-")[2]);
+		}
+		////////////////////////////////////////
+
+		if(key == "endDate")
+		{
+			
+			endDate = value;
+			endYear = parseInt(value.split("-")[0]);
+			endMonth = value.split("-")[1];
+			endMonth = endMonth.replace(/^0/,"");//05 ---> 5
+			endDay = parseInt(value.split("-")[2]);
+		}
+
+		//////////////////////////////////
+		else if(key == "url")
+		{
+			url = value;
+		}
+		else if(key == "defaultUrl")
+		{
+			defaultUrl = value;			
+		}
+	}
+	tipWord="该新闻页从" + startYear + "年" + startMonth + "月" + startDay + "日开始";
+	if(endYear){
+		tipWord+="到" + endYear + "年" + endMonth + "月" + endDay + "日结束";
+	}
+	
+	
+
+	
+
+</script>
+
+<body>
+
+
+<!-- 日历 : begin -->
+		<form name='calendar'>
+			<table width="140" align="center" cellspacing="0" style="background:#a2c5eb; color:#fff; margin-top:2px;">
+			<tr align="center">
+			<td width="20" height="18"><div id="prev" onclick="TurnDate(0)" style="color:#fff;cursor:pointer; font-size:9px; font-family:Arial;">&lt;&lt;</div></td>
+			<td id="curDate" style=" font-weight:bold;"><script language="JavaScript" type="text/javascript">
+			<!--//--><![CDATA[//><!-- 
+			
+function GetObj(objName){
+	if(document.getElementById){
+		return eval('document.getElementById("' + objName + '")');
+	}else if(document.layers){
+		return eval("document.layers['" + objName +"']");
+	}else{
+		return eval('document.all.' + objName);
+	}
+}
+
+function ChangeSelect(year){
+	curY = year;
+
+	if(curY < startYear || (curY == startYear && (parseInt(curM)+1) < startMonth) || (curY == myYear && (parseInt(curM) > myMonth))){
+		if(!(curY == myYear && (parseInt(curM) > myMonth))){
+			alert(tipWord);
+		}
+		curY = myYear;
+		curM = myMonth ;
+		var i = myYear - curY;
+		document.getElementById("calendarMonth").innerHTML = parseInt(myMonth + 1) + "月";
+		document.getElementById("calendarYear").options[i].selected = true;
+	}
+	SetDate(curY, curM);
+
+	if(myMonth-curM+(myYear-curY)*12>0){
+		GetObj("next").style.display = "block";
+	}
+	else{
+		GetObj("next").style.display = "none";
+	}
+}
+
+var myDate = new Date();
+var myYear = myDate.getFullYear();
+var myMonth = myDate.getMonth();
+var myDay = myDate.getDate();
+
+var curY = myYear;
+var curM = myMonth;
+var curD = myDay;
+
+
+
+document.write("<span id='calendarMonth'>" + (curM+1) + "月</span>");
+
+document.write("<select id='calendarYear' onchange='javascript:ChangeSelect(this.value);'>");
+for(var i = myYear ; i >= 2000 ; i --)
+{
+	if(i == myYear )
+	{
+		document.write("<option value=" + i + " selected>" + i + "</option>");
+	}
+	else
+	{
+		document.write("<option value=" + i + ">" + i + "</option>");	
+	}
+}
+document.write("</select>");
+
+document.write("年");
+			
+function TurnDate(sign){
+
+	if(sign==0){
+		if(curM<=0){
+			curM = 11;
+			curY --;
+		}else{
+			curM --;
+		}
+	}else if(sign==1){
+		if(curM>=11){
+			curM = 0;
+			curY ++;
+		}else{
+			curM ++;
+		}
+	}
+
+
+	if(curY < startYear || (curY == startYear && (parseInt(curM)+1) < startMonth) )
+	{
+		if(sign == 0)
+		{
+			alert(tipWord);
+
+			curY = startYear;
+			curM = startMonth - 1;
+	
+			document.getElementById("calendarMonth").innerHTML = parseInt(startMonth) + "月";
+		}
+		else
+		{
+			curY = myYear;
+			curM = myMonth ;
+			document.getElementById("calendarMonth").innerHTML = parseInt(startMonth) + "月";
+		}
+	}
+	else
+	{
+		document.getElementById("calendarMonth").innerHTML = (curM + 1) + "月";
+	}
+
+	var i = myYear - curY;
+	document.getElementById("calendarYear").options[i].selected = true;
+
+
+	SetDate(curY, curM);
+
+	if(myMonth-curM+(myYear-curY)*12>0){
+		GetObj("next").style.display = "block";
+	}else{
+		GetObj("next").style.display = "none";
+	}
+}
+			//--><!]]>
+			</script></td>
+			<td width="20"><div id="next" onclick="TurnDate(1)" style="color:#fff;cursor:pointer;display:none; font-size:9px; font-family:Arial;">&gt;&gt;</div></td>
+			</tr>
+			</table>
+			
+			<table width="140" border=0 cellpadding=0 cellspacing=2 align=center style="background:#fafafa; border:1px #ddd solid;">
+			<tr align=center>
+			<td class=ftd02>日</td>
+			<td class=ftd02>一</td>
+			<td class=ftd02>二</td>
+			<td class=ftd02>三</td>
+			<td class=ftd02>四</td>
+			<td class=ftd02>五</td>
+			<td class=ftd02>六</td>
+			</tr>
+			<tr align=center>
+			<td id='d0' class=ctd01></td>
+			<td id='d1' class=ctd01></td>
+			<td id='d2' class=ctd01></td>
+			<td id='d3' class=ctd01></td>
+			<td id='d4' class=ctd01></td>
+			<td id='d5' class=ctd01></td>
+			<td id='d6' class=ctd01></td>
+			</tr>
+			<tr align=center>
+			<td id='d7' class=ctd01></td>
+			<td id='d8' class=ctd01></td>
+			<td id='d9' class=ctd01></td>
+			<td id='d10' class=ctd01></td>
+			<td id='d11' class=ctd01></td>
+			<td id='d12' class=ctd01></td>
+			<td id='d13' class=ctd01></td>
+			</tr>
+			<tr align=center>
+			<td id='d14' class=ctd01></td>
+			<td id='d15' class=ctd01></td>
+			<td id='d16' class=ctd01></td>
+			<td id='d17' class=ctd01></td>
+			<td id='d18' class=ctd01></td>
+			<td id='d19' class=ctd01></td>
+			<td id='d20' class=ctd01></td>
+			</tr>
+			<tr align=center>
+			<td id='d21' class=ctd01></td>
+			<td id='d22' class=ctd01></td>
+			<td id='d23' class=ctd01></td>
+			<td id='d24' class=ctd01></td>
+			<td id='d25' class=ctd01></td>
+			<td id='d26' class=ctd01></td>
+			<td id='d27' class=ctd01></td>
+			</tr>
+			<tr align=center>
+			<td id='d28' class=ctd01></td>
+			<td id='d29' class=ctd01></td>
+			<td id='d30' class=ctd01></td>
+			<td id='d31' class=ctd01></td>
+			<td id='d32' class=ctd01></td>
+			<td id='d33' class=ctd01></td>
+			<td id='d34' class=ctd01></td>
+			</tr>
+			<tr align=center>
+			<td id='d35' class=ctd01></td>
+			<td id='d36' class=ctd01></td>
+			<td id='d37' class=ctd01></td>
+			<td id='d38' class=ctd01></td>
+			<td id='d39' class=ctd01></td>
+			<td id='d40' class=ctd01></td>
+			<td id='d41' class=ctd01></td>
+			</tr>
+			</table>
+<div style="display:none;">
+<select name='cYear' onChange='SetDate(document.calendar.cYear.value,document.calendar.cMonth.value)'></select>&nbsp;<b style='color:#fff;'>月份:</b><select name='cMonth' onChange='SetDate(document.calendar.cYear.value,document.calendar.cMonth.value)'></select>
+</div>
+		</form>
+		<script language='javascript' type='text/javascript'>
+		<!--
+		var RURL= window.location.href;
+		var paramARR = RURL.split("&")[1];
+		var ReturnV = paramARR.split("=")[1];
+		function GetObj(objName){
+			if(document.getElementById){
+				return eval('document.getElementById("' + objName + '")');
+			}else{
+				return eval('document.all.' + objName);
+			}
+		}
+		//calendar
+
+		function GetUrl(mYear,endMonth,endDay,dayIndex){
+            var urlStr = ReturnV.replace("{@year04}",parseInt(mYear)).replace("{@month}",parseInt(endMonth)).replace("{@day}",parseInt(endDay));
+			urlStr = urlStr.replace("{@year02}",mYear.toString());
+			var __time = new Date() /*获得当前的时间对象*/ 
+            var __year = __time.getYear() /*读当前的年*/ 
+            var __month = __time.getMonth()+1 /*读当前月*/ 
+            var __date = __time.getDate() /*读当前的日*/ 
+
+            var ___strDayIndex;
+
+            if(__year == mYear && endMonth == __month)
+            {
+                if(__date < endDay)
+                    ___strDayIndex = dayIndex;
+                else
+                    ___strDayIndex = "<a href='/" + urlStr + "/index.html' target='_blank' >" +dayIndex+"</a>";
+            }
+            else
+                ___strDayIndex = "<a href='/" + urlStr + "/index.html' target='_blank' >" +dayIndex+"</a>";
+            
+
+			return ___strDayIndex;
+		}
+
+		//for(var i=myYear;i>=2001;i--){
+		var yearIndex = 0;
+		for(var i=(myYear-5);i<=(myYear+5);i++){
+			document.calendar.cYear[document.calendar.cYear.length] = new Option(i+"年", i);
+			if(i==myYear) document.calendar.cYear.selectedIndex = yearIndex;
+			yearIndex++;
+		}
+
+		for(var j=0;j<=11;j++){
+			document.calendar.cMonth[j] = new Option(j+1, j);
+			if(j==myMonth) document.calendar.cMonth.selectedIndex = j;
+		}
+
+
+		function GetTip(dayIndex){
+
+			return "<a href='javascript:void(0);'  onclick='alert(\""+tipWord+"\");'>"+dayIndex+"</a>";
+
+		}
+		function SetDate(mYear, mMonth){
+			mYear = parseInt(mYear);
+			mMonth = parseInt(mMonth);
+		
+			var firstDay = new Date(mYear,mMonth,1);
+			var lastDay = new Date(((mMonth==11)?(mYear+1):mYear),((mMonth==11)?0:(mMonth+1)),0);
+			//new Date(2005,0,0);指2004年最后一天
+
+			var dayIndex = 1;
+			for(var i=0;i<=41;i++){
+			//getDay返回0 星期天 1 星期一 ...
+				if(i>=firstDay.getDay() && i<=(firstDay.getDay()+lastDay.getDate()-1)){
+			
+					//GetObj('d'+i).innerHTML = (mYear==myYear&&mMonth==myMonth&&dayIndex>myDay)?dayIndex:GetUrl(mYear,endMonth,endDay,dayIndex);
+					/*if((mYear>=startYear&&mMonth+1>=startMonth&&dayIndex>startDay))
+					{//&&(mYear<=endYear&&mMonth<=endMonth&&dayIndex<endDay)
+					alert(dayIndex);
+					}*/
+					var bStart_1= mYear>startYear;
+					var bStart_2= mYear==startYear&&mMonth+1>startMonth;
+					var bStart_3= mYear==startYear&&mMonth+1==startMonth&&dayIndex>=startDay;
+					var bEnd_1= mYear<endYear;
+					var bEnd_2= mYear==endYear&&mMonth+1<endMonth;
+					var bEnd_3= mYear==endYear&&mMonth+1==endMonth&&dayIndex<=endDay;
+					var tmp=!endYear?true:(bEnd_1||bEnd_2||bEnd_3);
+					var dataHtml=!((bStart_1||bStart_2||bStart_3)&&tmp)?GetTip(dayIndex):GetUrl(mYear,mMonth+1,dayIndex,dayIndex);
+					GetObj('d'+i).innerHTML = dataHtml;
+					GetObj('d'+i).className = "ctd01";
+					if(mYear==myYear && mMonth==myMonth && dayIndex==myDay)
+					{
+						GetObj('d'+i).className = "ctd02";
+						GetObj('d'+i).innerHTML = dataHtml;
+					}
+					dayIndex++;
+				}
+				else{
+					GetObj('d'+i).innerHTML = "";
+				}
+			}
+		}
+		SetDate(myYear, myMonth)
+
+		//-->
+		</script>
+		<!-- 日历 : end -->
+
+</body>
+</html>
