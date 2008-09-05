@@ -38,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE9DD8C1-0
 	ProjectSection(SolutionItems) = preProject
 		doc\editlog.txt = doc\editlog.txt
 		doc\install_config.txt = doc\install_config.txt
+		notebook.txt = notebook.txt
 	EndProjectSection
 EndProject
 Global
