@@ -1,0 +1,164 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC6D37DD-CEF4-4E7E-A4E2-E90829A1B3F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foosun.CMS</RootNamespace>
+    <AssemblyName>Foosun.CMS</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.JRO, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\引用组件\Interop.JRO.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Label.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="stat.cs" />
+    <Compile Include="survey.cs" />
+    <Compile Include="sys.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foosun.Common\Foosun.Common.csproj">
+      <Project>{F7309C46-B015-425B-B929-338F90A5B682}</Project>
+      <Name>Foosun.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Config\Foosun.Config.csproj">
+      <Project>{1327A138-9082-4480-B612-94A1FB4521FE}</Project>
+      <Name>Foosun.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Control\Foosun.Control.csproj">
+      <Project>{AFE6BB30-E0BD-4744-B0F4-23BC8EFCBFD8}</Project>
+      <Name>Foosun.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.DALFactory\Foosun.DALFactory.csproj">
+      <Project>{63D5B865-C045-4FBC-86AC-18E082006408}</Project>
+      <Name>Foosun.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Global\Foosun.Global.csproj">
+      <Project>{A48884A0-3E9C-466C-BB5C-39E68AA884A9}</Project>
+      <Name>Foosun.Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Model\Foosun.Model.csproj">
+      <Project>{5A4717F3-8A33-46E4-B14A-EF382425C64D}</Project>
+      <Name>Foosun.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foosun.Publish\Foosun.Publish.csproj">
+      <Project>{6612F705-1EAE-401B-A530-75EFFF5A93D9}</Project>
+      <Name>Foosun.Publish</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="AdminGroup.cs" />
+    <Compile Include="Ads.cs" />
+    <Compile Include="Ads\Ads.cs" />
+    <Compile Include="Arealist.cs" />
+    <Compile Include="Channel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Collect\Collect.cs" />
+    <Compile Include="Collect\Page.cs" />
+    <Compile Include="Collect\PageList.cs" />
+    <Compile Include="Collect\PageNews.cs" />
+    <Compile Include="Collect\PageRes.cs" />
+    <Compile Include="Collect\Utility.cs" />
+    <Compile Include="Common\createJs.cs" />
+    <Compile Include="Common\FileCompare.cs" />
+    <Compile Include="Common\FSImage.cs" />
+    <Compile Include="Common\FsLog.cs" />
+    <Compile Include="Common\rootPublic.cs" />
+    <Compile Include="Common\StrOperate.cs" />
+    <Compile Include="Common\SystemInfo.cs" />
+    <Compile Include="Common\UpLoad.cs" />
+    <Compile Include="Constr.cs" />
+    <Compile Include="ContentManage.cs" />
+    <Compile Include="CustomForm.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DefineTable.cs" />
+    <Compile Include="Discuss.cs" />
+    <Compile Include="DynamicTrans.cs" />
+    <Compile Include="FreeLabel.cs" />
+    <Compile Include="Friend.cs" />
+    <Compile Include="FrindLink.cs" />
+    <Compile Include="FsSecurity.cs" />
+    <Compile Include="Help.cs" />
+    <Compile Include="Info.cs" />
+    <Compile Include="Install.cs" />
+    <Compile Include="JSTemplet.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Mycom.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="NewsJS.cs" />
+    <Compile Include="Pagination.cs" />
+    <Compile Include="Photo.cs" />
+    <Compile Include="Psframe.cs" />
+    <Compile Include="Publish.cs" />
+    <Compile Include="Recyle.cs" />
+    <Compile Include="Rss.cs" />
+    <Compile Include="Search.cs" />
+    <Compile Include="SearchEngine.cs" />
+    <Compile Include="Special.cs" />
+    <Compile Include="Style\Style.cs" />
+    <Compile Include="Templet\Templet.cs" />
+    <Compile Include="Upload.cs" />
+    <Compile Include="UserAdapt.cs" />
+    <Compile Include="UserLogin.cs" />
+    <Compile Include="UserMisc.cs" />
+    <Compile Include="UserList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="obj\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
