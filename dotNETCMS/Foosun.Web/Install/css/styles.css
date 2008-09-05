@@ -1,0 +1,29 @@
+BODY { MARGIN-TOP:20px; BACKGROUND-COLOR: #F7F7F7 }
+BODY { FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: Tahoma, Verdana }
+TD { FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: Tahoma, Verdana }
+TH { FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: Tahoma, Verdana }
+A { COLOR: #000000; TEXT-DECORATION: none }
+INPUT { BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 14px; BORDER-LEFT-COLOR: #c0c0c0; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #c0c0c0; PADDING-BOTTOM: 1px; COLOR: #000000; BORDER-TOP-COLOR: #c0c0c0; PADDING-TOP: 1px; FONT-FAMILY: Tahoma, Verdana, "ËÎÌו"; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #c0c0c0 }
+TEXTAREA { BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 14px; BORDER-LEFT-COLOR: #c0c0c0; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #c0c0c0; PADDING-BOTTOM: 1px; COLOR: #000000; BORDER-TOP-COLOR: #c0c0c0; PADDING-TOP: 1px; FONT-FAMILY: Tahoma, Verdana, "ËÎÌו"; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #c0c0c0 }
+.setindexstyle
+{
+	overflow:hidden;
+	position:absolute;
+	margin:auto;
+	right:0px;
+	top:0px;
+	width:100%;
+	height:800px;
+	background:#fff repeat-x left top;
+	text-align:left;
+	padding:5px;
+	padding-top:168px;
+	clip:rect(auto, auto, auto, auto);
+	z-index:50;
+	filter: progid:DXImageTransform.Microsoft.DropShadow(color=#B6B6B6,offX=2,offY=2,positives=true);
+	filter:alpha(opacity=90);
+	-moz-opacity:0.9;	
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+}
