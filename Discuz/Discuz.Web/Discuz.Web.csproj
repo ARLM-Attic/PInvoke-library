@@ -635,10 +635,6 @@
     <Content Include="DNT.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\CookComputing.XmlRpc.dll" />
-    <Content Include="bin\Interop.SQLDMO.dll" />
-    <Content Include="bin\MySql.Data.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="config\aggregation.config" />
     <Content Include="config\aggregationconfiginfo.config" />
     <Content Include="config\album.config" />
