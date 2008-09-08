@@ -95,9 +95,9 @@
     <Content Include="aspx\1\usercpshowpm.aspx" />
     <Content Include="aspx\1\userinfo.aspx" />
     <Content Include="index.aspx" />
-    <Content Include="upgrade\css\styles.css" />
-    <Content Include="upgrade\index.aspx" />
-    <Content Include="upgrade\upgrade.aspx" />
+    <Content Include="upgrade1\css\styles.css" />
+    <Content Include="upgrade1\index.aspx" />
+    <Content Include="upgrade1\upgrade.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -425,12 +425,12 @@
     <Content Include="aspx\1\usercppreference.aspx" />
     <Content Include="aspx\1\usercpsubscribe.aspx" />
     <Content Include="aspx\1\website.aspx" />
-    <Content Include="install\index.aspx" />
-    <Content Include="install\step2.aspx" />
-    <Content Include="install\step3.aspx" />
-    <Content Include="install\step4.aspx" />
-    <Content Include="install\succeed.aspx" />
-    <Content Include="install\systemfile.aspx" />
+    <Content Include="install1\index.aspx" />
+    <Content Include="install1\step2.aspx" />
+    <Content Include="install1\step3.aspx" />
+    <Content Include="install1\step4.aspx" />
+    <Content Include="install1\succeed.aspx" />
+    <Content Include="install1\systemfile.aspx" />
     <Content Include="javascript\adm.js" />
     <Content Include="javascript\ajax.js" />
     <Content Include="javascript\bbcode.js" />
@@ -628,8 +628,8 @@
     <Content Include="tools\rss.xsl" />
     <Content Include="tools\showtopics.aspx" />
     <Content Include="tools\verifyimagepage.aspx" />
-    <Content Include="upgrade\finish.aspx" />
-    <Content Include="upgrade\systemfile.aspx" />
+    <Content Include="upgrade1\finish.aspx" />
+    <Content Include="upgrade1\systemfile.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DNT.config" />
@@ -655,10 +655,10 @@
     <Content Include="config\spread.config" />
     <Content Include="config\trade.config" />
     <Content Include="config\urls.config" />
-    <Content Include="upgrade\images\logo.jpg" />
+    <Content Include="upgrade1\images\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="upgrade\js\" />
+    <Folder Include="upgrade1\js\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />

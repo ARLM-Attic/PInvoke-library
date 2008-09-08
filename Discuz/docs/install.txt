@@ -1,0 +1,4 @@
+
+
+
+Delete the aspx files in the "Install" and "Upgrade" folder.
