@@ -1,4 +1,9 @@
+1. 移动 web.config,dnt.config 文件到网站根目录
+2. 移动 bin 目录，aspnet_client 目录到网站根目录
 
+3. 复制/重命名/附加 数据库
+4. 修改连接字符串 in DNT.config
+5. 删除Install"和"Upgrade"目录.
 
-
-Delete the aspx files in the "Install" and "Upgrade" folder.
+3. 运行install/index.aspx
+4. 删除Install"和"Upgrade"目录.

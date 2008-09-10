@@ -39,7 +39,10 @@
     <BaseAddress>4194304</BaseAddress>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.SQLDMO, Version=8.0.0.0, Culture=neutral" />
+    <Reference Include="Interop.SQLDMO, Version=8.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin_common\Interop.SQLDMO.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />

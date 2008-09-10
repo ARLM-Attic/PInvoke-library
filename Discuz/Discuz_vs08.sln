@@ -58,6 +58,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1E79CEB2-9
 		docs\install.txt = docs\install.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin_common", "bin_common", "{3D869FCA-47C6-43EB-B028-97B46C26CFED}"
+	ProjectSection(SolutionItems) = preProject
+		bin_common\CookComputing.XmlRpc.dll = bin_common\CookComputing.XmlRpc.dll
+		bin_common\Interop.SQLDMO.dll = bin_common\Interop.SQLDMO.dll
+		bin_common\MySql.Data.dll = bin_common\MySql.Data.dll
+		bin_common\Newtonsoft.Json.dll = bin_common\Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 26
