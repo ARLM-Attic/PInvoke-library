@@ -501,11 +501,12 @@ namespace Win32
         public static extern void mouse_event(MOUSEEVENTF dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
 
         [DllImport(User32Dll, SetLastError = true)]
-        public static extern void keybd_event(byte bVk, byte bScan, KEYEVENTF dwFlags, uint dwExtraInfo);
+        public static extern void keybd_event(VK bVk, byte bScan, KEYEVENTF dwFlags, uint dwExtraInfo);
 
         [Flags]
         public enum KEYEVENTF : uint
         {
+            KEYEVENTF_KEYDOWN = 0,
             KEYEVENTF_EXTENDEDKEY = 0x0001,
             KEYEVENTF_KEYUP = 0x0002,
             //KEYEVENTF_SILENT = ?
@@ -884,6 +885,27 @@ namespace Win32
             WM_XBUTTONDOWN = 0x020B,
             WM_XBUTTONUP = 0x020C
         }
+
+        // Scroll Bar Commands
+        public enum SBCommand
+        {
+            SB_LINEUP = 0,
+            SB_LINELEFT = 0,
+            SB_LINEDOWN = 1,
+            SB_LINERIGHT = 1,
+            SB_PAGEUP = 2,
+            SB_PAGELEFT = 2,
+            SB_PAGEDOWN = 3,
+            SB_PAGERIGHT = 3,
+            SB_THUMBPOSITION = 4,
+            SB_THUMBTRACK = 5,
+            SB_TOP = 6,
+            SB_LEFT = 6,
+            SB_BOTTOM = 7,
+            SB_RIGHT = 7,
+            SB_ENDSCROLL = 8,
+        }
+
         #endregion
 
         #region Virtual Key(VK)
