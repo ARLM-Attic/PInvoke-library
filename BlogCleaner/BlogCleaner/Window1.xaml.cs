@@ -23,5 +23,21 @@ namespace BlogCleaner
         {
             InitializeComponent();
         }
+
+        private void btnClean_Click(object sender, RoutedEventArgs e)
+        {
+            string oldText = Clipboard.GetText();
+            textBox1.Text = oldText;
+
+            StringBuilder builder = new StringBuilder(oldText);
+            builder.Replace("<p>", string.Empty);
+            builder.Replace("</p>", string.Empty);
+            Clipboard.SetText(builder.ToString());
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(textBox1.Text);
+        }
     }
 }
