@@ -883,7 +883,167 @@ namespace Win32
             WM_WININICHANGE = 0x001A,
             WM_XBUTTONDBLCLK = 0x020D,
             WM_XBUTTONDOWN = 0x020B,
-            WM_XBUTTONUP = 0x020C
+            WM_XBUTTONUP = 0x020C,
+
+            #region list view messages
+            LVM_FIRST = 0x1000,
+            LVN_FIRST = -100,
+
+            LVM_GETBKCOLOR = LVM_FIRST + 0,
+            LVM_SETBKCOLOR = LVM_FIRST + 1,
+            LVM_GETIMAGELIST = LVM_FIRST + 2,
+            LVM_SETIMAGELIST = LVM_FIRST + 3,
+            LVM_GETITEMCOUNT = LVM_FIRST + 4,
+            LVM_GETITEMA = LVM_FIRST + 5,
+            LVM_SETITEMA = LVM_FIRST + 6,
+            LVM_INSERTITEMA = LVM_FIRST + 7,
+            LVM_DELETEITEM = LVM_FIRST + 8,
+            LVM_DELETEALLITEMS = LVM_FIRST + 9,
+            LVM_GETCALLBACKMASK = LVM_FIRST + 10,
+            LVM_SETCALLBACKMASK = LVM_FIRST + 11,
+            LVM_GETNEXTITEM = LVM_FIRST + 12,
+            LVM_FINDITEMA = LVM_FIRST + 13,
+            LVM_GETITEMRECT = LVM_FIRST + 14,
+            LVM_SETITEMPOSITION = LVM_FIRST + 15,
+            LVM_GETITEMPOSITION = LVM_FIRST + 16,
+            LVM_GETSTRINGWIDTHA = LVM_FIRST + 17,
+            LVM_HITTEST = LVM_FIRST + 18,
+            LVM_ENSUREVISIBLE = LVM_FIRST + 19,
+            LVM_SCROLL = LVM_FIRST + 20,
+            LVM_REDRAWITEMS = LVM_FIRST + 21,
+            LVM_ARRANGE = LVM_FIRST + 22,
+            LVM_EDITLABELA = LVM_FIRST + 23,
+            LVM_GETEDITCONTROL = LVM_FIRST + 24,
+            LVM_GETCOLUMNA = LVM_FIRST + 25,
+            LVM_SETCOLUMNA = LVM_FIRST + 26,
+            LVM_INSERTCOLUMNA = LVM_FIRST + 27,
+            LVM_DELETECOLUMN = LVM_FIRST + 28,
+            LVM_GETCOLUMNWIDTH = LVM_FIRST + 29,
+            LVM_SETCOLUMNWIDTH = LVM_FIRST + 30,
+            LVM_GETHEADER = LVM_FIRST + 31,
+            LVM_CREATEDRAGIMAGE = LVM_FIRST + 33,
+            LVM_GETVIEWRECT = LVM_FIRST + 34,
+            LVM_GETTEXTCOLOR = LVM_FIRST + 35,
+            LVM_SETTEXTCOLOR = LVM_FIRST + 36,
+            LVM_GETTEXTBKCOLOR = LVM_FIRST + 37,
+            LVM_SETTEXTBKCOLOR = LVM_FIRST + 38,
+            LVM_GETTOPINDEX = LVM_FIRST + 39,
+            LVM_GETCOUNTPERPAGE = LVM_FIRST + 40,
+            LVM_GETORIGIN = LVM_FIRST + 41,
+            LVM_UPDATE = LVM_FIRST + 42,
+            LVM_SETITEMSTATE = LVM_FIRST + 43,
+            LVM_GETITEMSTATE = LVM_FIRST + 44,
+            LVM_GETITEMTEXTA = LVM_FIRST + 45,
+            LVM_SETITEMTEXTA = LVM_FIRST + 46,
+            LVM_SETITEMCOUNT = LVM_FIRST + 47,
+            LVM_SORTITEMS = LVM_FIRST + 48,
+            LVM_SETITEMPOSITION32 = LVM_FIRST + 49,
+            LVM_GETSELECTEDCOUNT = LVM_FIRST + 50,
+            LVM_GETITEMSPACING = LVM_FIRST + 51,
+            LVM_GETISEARCHSTRINGA = LVM_FIRST + 52,
+            LVM_SETICONSPACING = LVM_FIRST + 53,
+            LVM_SETEXTENDEDLISTVIEWSTYLE = LVM_FIRST + 54,
+            LVM_GETEXTENDEDLISTVIEWSTYLE = LVM_FIRST + 55,
+            LVM_GETSUBITEMRECT = LVM_FIRST + 56,
+            LVM_SUBITEMHITTEST = LVM_FIRST + 57,
+            LVM_SETCOLUMNORDERARRAY = LVM_FIRST + 58,
+            LVM_GETCOLUMNORDERARRAY = LVM_FIRST + 59,
+            LVM_SETHOTITEM = LVM_FIRST + 60,
+            LVM_GETHOTITEM = LVM_FIRST + 61,
+            LVM_SETHOTCURSOR = LVM_FIRST + 62,
+            LVM_GETHOTCURSOR = LVM_FIRST + 63,
+            LVM_APPROXIMATEVIEWRECT = LVM_FIRST + 64,
+            LVM_SETWORKAREAS = LVM_FIRST + 65,
+            LVM_SETBKIMAGEA = LVM_FIRST + 68,
+            LVM_GETWORKAREAS = LVM_FIRST + 70,
+            LVM_GETNUMBEROFWORKAREAS = LVM_FIRST + 73,
+            LVM_GETSELECTIONMARK = LVM_FIRST + 66,
+            LVM_SETSELECTIONMARK = LVM_FIRST + 67,
+            LVM_GETBKIMAGEA = LVM_FIRST + 69,
+            LVM_SETHOVERTIME = LVM_FIRST + 71,
+            LVM_GETHOVERTIME = LVM_FIRST + 72,
+            LVM_SETTOOLTIPS = LVM_FIRST + 74,
+            LVM_GETITEMW = LVM_FIRST + 75,
+            LVM_SETITEMW = LVM_FIRST + 76,
+            LVM_INSERTITEMW = LVM_FIRST + 77,
+            LVM_GETTOOLTIPS = LVM_FIRST + 78,
+            LVM_SORTITEMSEX = LVM_FIRST + 81,
+            LVM_FINDITEMW = LVM_FIRST + 83,
+            LVM_GETSTRINGWIDTHW = LVM_FIRST + 87,
+            LVM_GETCOLUMNW = LVM_FIRST + 95,
+            LVM_SETCOLUMNW = LVM_FIRST + 96,
+            LVM_INSERTCOLUMNW = LVM_FIRST + 97,
+            LVM_GETITEMTEXTW = LVM_FIRST + 115,
+            LVM_SETITEMTEXTW = LVM_FIRST + 116,
+            LVM_GETISEARCHSTRINGW = LVM_FIRST + 117,
+            LVM_EDITLABELW = LVM_FIRST + 118,
+            LVM_SETBKIMAGEW = LVM_FIRST + 138,
+            LVM_GETBKIMAGEW = LVM_FIRST + 139,
+            LVM_SETSELECTEDCOLUMN = LVM_FIRST + 140,
+            LVM_SETTILEWIDTH = LVM_FIRST + 141,
+            LVM_SETVIEW = LVM_FIRST + 142,
+            LVM_GETVIEW = LVM_FIRST + 143,
+            LVM_INSERTGROUP = LVM_FIRST + 145,
+            LVM_SETGROUPINFO = LVM_FIRST + 147,
+            LVM_GETGROUPINFO = LVM_FIRST + 149,
+            LVM_REMOVEGROUP = LVM_FIRST + 150,
+            LVM_MOVEGROUP = LVM_FIRST + 151,
+            LVM_MOVEITEMTOGROUP = LVM_FIRST + 154,
+            LVM_SETGROUPMETRICS = LVM_FIRST + 155,
+            LVM_GETGROUPMETRICS = LVM_FIRST + 156,
+            LVM_ENABLEGROUPVIEW = LVM_FIRST + 157,
+            LVM_SORTGROUPS = LVM_FIRST + 158,
+            LVM_INSERTGROUPSORTED = LVM_FIRST + 159,
+            LVM_REMOVEALLGROUPS = LVM_FIRST + 160,
+            LVM_HASGROUP = LVM_FIRST + 161,
+            LVM_SETTILEVIEWINFO = LVM_FIRST + 162,
+            LVM_GETTILEVIEWINFO = LVM_FIRST + 163,
+            LVM_SETTILEINFO = LVM_FIRST + 164,
+            LVM_GETTILEINFO = LVM_FIRST + 165,
+            LVM_SETINSERTMARK = LVM_FIRST + 166,
+            LVM_GETINSERTMARK = LVM_FIRST + 167,
+            LVM_INSERTMARKHITTEST = LVM_FIRST + 168,
+            LVM_GETINSERTMARKRECT = LVM_FIRST + 169,
+            LVM_SETINSERTMARKCOLOR = LVM_FIRST + 170,
+            LVM_GETINSERTMARKCOLOR = LVM_FIRST + 171,
+            LVM_SETINFOTIP = LVM_FIRST + 173,
+            LVM_GETSELECTEDCOLUMN = LVM_FIRST + 174,
+            LVM_ISGROUPVIEWENABLED = LVM_FIRST + 175,
+            LVM_GETOUTLINECOLOR = LVM_FIRST + 176,
+            LVM_SETOUTLINECOLOR = LVM_FIRST + 177,
+            LVM_CANCELEDITLABEL = LVM_FIRST + 179,
+            LVM_MAPINDEXTOID = LVM_FIRST + 180,
+            LVM_MAPIDTOINDEX = LVM_FIRST + 181,
+
+            LVN_ITEMCHANGING = LVN_FIRST - 0,
+            LVN_ITEMCHANGED = LVN_FIRST - 1,
+            LVN_INSERTITEM = LVN_FIRST - 2,
+            LVN_DELETEITEM = LVN_FIRST - 3,
+            LVN_DELETEALLITEMS = LVN_FIRST - 4,
+            LVN_BEGINLABELEDITA = LVN_FIRST - 5,
+            LVN_ENDLABELEDITA = LVN_FIRST - 6,
+            LVN_COLUMNCLICK = LVN_FIRST - 8,
+            LVN_BEGINDRAG = LVN_FIRST - 9,
+            LVN_BEGINRDRAG = LVN_FIRST - 11,
+            LVN_ODCACHEHINT = LVN_FIRST - 13,
+            LVN_ITEMACTIVATE = LVN_FIRST - 14,
+            LVN_ODSTATECHANGED = LVN_FIRST - 15,
+            LVN_HOTTRACK = LVN_FIRST - 21,
+            LVN_GETDISPINFOA = LVN_FIRST - 50,
+            LVN_SETDISPINFOA = LVN_FIRST - 51,
+            LVN_ODFINDITEMA = LVN_FIRST - 52,
+            LVN_KEYDOWN = LVN_FIRST - 55,
+            LVN_MARQUEEBEGIN = LVN_FIRST - 56,
+            LVN_GETINFOTIPA = LVN_FIRST - 57,
+            LVN_GETINFOTIPW = LVN_FIRST - 58,
+            LVN_BEGINLABELEDITW = LVN_FIRST - 75,
+            LVN_ENDLABELEDITW = LVN_FIRST - 76,
+            LVN_GETDISPINFOW = LVN_FIRST - 77,
+            LVN_SETDISPINFOW = LVN_FIRST - 78,
+            LVN_ODFINDITEMW = LVN_FIRST - 79,
+            LVN_BEGINSCROLL = LVN_FIRST - 80,
+            LVN_ENDSCROLL = LVN_FIRST - 81,
+            #endregion
         }
 
         // Scroll Bar Commands
@@ -907,6 +1067,8 @@ namespace Win32
         }
 
         #endregion
+
+    
 
         #region Virtual Key(VK)
         public enum VK : int
@@ -1129,7 +1291,7 @@ namespace Win32
         [DllImport(User32Dll, SetLastError = true)]
         public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
 
-        [DllImport(User32Dll, CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport(User32Dll, SetLastError = true)]
         public static extern IntPtr SendMessage(IntPtr hWnd, WM Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport(User32Dll)]
@@ -1143,6 +1305,11 @@ namespace Win32
 
         [DllImport(User32Dll)]
         public static extern IntPtr GetMessageExtraInfo();
+
+        public static IntPtr MakeLParam(int wLow, int wHigh)
+        {
+            return (IntPtr)(((short)wHigh << 16) | (wLow & 0xffff));
+        } 
 
         #region Hook
         [DllImport(User32Dll, SetLastError = true)]
